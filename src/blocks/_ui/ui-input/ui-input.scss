@@ -1,0 +1,121 @@
+.ui-input {
+  position: relative;
+  @include adaptive-values((
+    font-size: (17px, 15px)
+  ));
+  font-family: inherit;
+  line-height: 1.3;
+  &__control {
+    width: 100%;
+    @include adaptive-values((
+      min-height: (60px, 45px),
+      padding: ((22px 46px 4px 20px), (20px 40px 4px 15px)),
+      border-radius: (10px, 12px),
+    ));
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.25)
+    );
+    background-position: left top;
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    font: inherit;
+    color: #fff;
+    outline: none;
+    transition: $transitionDuration ease;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    &:focus {
+      border-color: rgba(255, 255, 255, 1);
+      background-color: rgba(255, 255, 255, 0.2);
+      background-size: 100% 100%;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
+    }
+    &:focus ~ .ui-input__required {
+      opacity: 1;
+    }
+    &:focus ~ .ui-input__label,
+    &:-webkit-autofill ~ .ui-input__label,
+    .ui-input--filled & ~ .ui-input__label {
+      @include adaptive-values((
+        top: (9px, 5px),
+        font-size: (13px, 11px),
+      ));
+      transform: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.81em;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: #fff;
+      -webkit-background-clip: text;
+      background-clip: text;
+      caret-color: #fff;
+    }
+    &:-webkit-autofill {
+      box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
+    }
+    &:-webkit-autofill:hover {
+      box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.3);
+    }
+    &:-webkit-autofill:focus {
+      box-shadow:
+        inset 0 0 0 1000px rgba(255, 255, 255, 0.4),
+        0px 0px 20px rgba(255, 255, 255, 0.4);
+    }
+    &.ui-control--invalid {
+      border-color: #ff6236;
+      background-color: rgba(255, 255, 255, 0.4);
+      background-size: 0 100%;
+      box-shadow: 0px 0px 20px #ff6236;
+    }
+    &.ui-control--invalid:-webkit-autofill {
+      box-shadow:
+        inset 0 0 0 1000px rgba(255, 255, 255, 0.4),
+        0px 0px 20px #ff6236;
+    }
+  }
+  &__label {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    @include adaptive-values((
+      left: (20px, 15px)
+    ));
+    max-width: 80%;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 1);
+    font: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transform-origin: left top;
+    transition:
+      top $transitionDuration ease,
+      color $transitionDuration ease,
+      font-size $transitionDuration ease,
+      transform $transitionDuration ease;
+  }
+  &__required {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    @include adaptive-values((
+      right: (20px, 15px),
+      width: (8px, 8px),
+      height: (8px, 8px),
+    ));
+    transform: translateY(-45%);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' fill='none'%3E%3Cpath fill='%23fff' fill-opacity='.5' d='M1.125 6.987 2.875 8 4 6.025 5.125 8l1.75-1.013-1.15-1.974H8V2.987H5.725l1.15-1.974L5.125 0 4 1.975 2.875 0l-1.75 1.013 1.15 1.974H0v2.026h2.275z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: $transitionDuration ease;
+  }
+}

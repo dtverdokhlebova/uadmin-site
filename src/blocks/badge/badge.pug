@@ -1,0 +1,16 @@
+mixin badge(text, mods, tagName = 'div')
+  -
+    const baseName = 'badge'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  #{tagName}.badge(class=allMods)&attributes(attributes)
+    if typeof text !== 'undefined' && text !== null
+      !=text
+    block

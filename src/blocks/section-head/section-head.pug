@@ -1,0 +1,17 @@
+mixin section-head(title, description, mods)
+  -
+    const baseName = 'section-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .section-head(class=allMods)&attributes(attributes)
+    +ui-h2(title, 'section-head')
+    if description
+      +ui-h5(description, 'section-head', 'div')
+    block

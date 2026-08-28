@@ -1,0 +1,124 @@
+-
+  const contactBrands =[
+    ['logo_u_admin.svg'],
+    ['logo_acomps.svg'],
+    ['logo_yandex_cloud.svg']
+  ]
+  const contactFields =[
+    {
+      id: 'contact-name',
+      name: 'name',
+      label: 'Имя',
+      required: true,
+      className: 'contact-form__field',
+      controlClassName: 'js-contact-form-name'
+    },
+    {
+      id: 'contact-last-name',
+      name: 'last_name',
+      label: 'Фамилия',
+      required: true,
+      className: 'contact-form__field',
+      controlClassName: 'js-contact-form-last-name'
+    },
+    {
+      id: 'contact-email',
+      name: 'email',
+      label: 'Рабочий адрес электронной почты',
+      type: 'email',
+      required: true,
+      className: 'contact-form__field contact-form__field--w100',
+      controlClassName: 'js-contact-form-email'
+    },
+    {
+      id: 'contact-phone',
+      name: 'phone',
+      label: 'Рабочий телефон',
+      type: 'tel',
+      inputmode: 'tel',
+      required: true,
+      className: 'contact-form__field contact-form__field--w100',
+      controlClassName: 'js-contact-form-phone'
+    },
+    {
+      id: 'contact-company',
+      name: 'company',
+      label: 'Наименование компании',
+      className: 'contact-form__field contact-form__field--w100',
+      controlClassName: 'js-contact-form-company'
+    }
+  ]
+  const stationRanges =[
+    ['up-to-100', 'до 100'],
+    ['100-1000', '100 — 1000'],
+    ['1000-5000', '1000 — 5000'],
+    ['more-than-5000', 'Более 5000+']
+  ]
+
+mixin contact(mods)
+  -
+    const baseName = 'contact'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section#contact.section.section--bg-gradient.contact(class=allMods data-header-float-until)&attributes(attributes)
+    .inner
+      .contact__wrapper
+        .contact__content
+          .section-head.section-head--max-w-0
+            .contact__icon
+              img(src='../../images/contact/contact_icon.png' alt='')
+            +ui-h2('Запросить презентацию', 'section-head')
+            +ui-h5('', 'section-head', 'div')
+              | Оставьте заявку, наш менеджер свяжется с вами и&nbsp;предоставит демо-доступ к системе U-Admin
+          .contact-admin
+            .contact-admin__photo
+              img(src='../../images/contact/contact_admin_photo.jpg' alt='')
+              .contact-admin__badge 15
+            +ui-p2('15 часов системного администратора в&nbsp;подарок', 'contact-admin')
+          .contact-brands
+            each brand in contactBrands
+              .contact-brands__item
+                img(src=`../../images/logos/${brand[0]}` alt='')
+
+        form.contact-form.js-contact-form.js-contact-form-validation.js-contact-form-demo(action='#')
+          .contact-form__body
+            .contact-form__grid
+              each field in contactFields
+                +ui-input(field)
+            .contact-form__row
+              #contact-range-group.contact-form__range
+                .contact-form__range-title Количество рабочих станций и серверов в компании:
+                .contact-form__range-options
+                  each option in stationRanges
+                    label.contact-form__range-option
+                      input.contact-form__range-input(type='radio' name='contact-form-range-option' value=option[0] checked=option[0] ==='1000-5000')
+                      span.contact-form__range-box=option[1]
+            .contact-form__row.contact-form__row--mt-l
+              +ui-checkbox({ id: 'policy', name: 'policy', required: true, inputClasses: 'js-contact-form-policy' }).ui-checkbox--white
+                | Подтверждаю, что ознакомился с&nbsp;
+                a(href='#') политикой конфиденциальности
+                |  и&nbsp;даю согласие на&nbsp;
+                a(href='#') обработку персональных данных
+              .contact-form__group-errors.js-contact-form-policy-errors
+            .contact-form__row
+              +ui-button('Запросить презентацию', null, '--size-l, --primary').contact-form__submit(type='submit')
+          .contact-form__success.js-contact-form-success(tabindex='-1' hidden)
+            .contact-form__success-content
+              .contact-form__success-icon
+                img(src='../../images/contact/contact_success.png' alt='')
+              +ui-h4('', '', 'div').contact-form__success-title
+                | Ваша заявка успешно
+                br
+                | отправлена
+              +ui-p1().contact-form__success-text
+                | Наш менеджер свяжется с вами и предоставит демо-доступ к системе U-Admin в ближайшее время
+            +ui-button('Хорошо', null, '--size-l, --secondary').contact-form__success-button.js-contact-form-success-reset
+      +footer()
+      block

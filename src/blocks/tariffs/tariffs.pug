@@ -1,0 +1,123 @@
+-
+  const tariffFeatureNames =[
+    'Портал самообслуживания',
+    'Service Desk',
+    'ITAM/CMDB',
+    'Диспетчерская панель',
+    'Отчеты',
+    'Управление разработкой',
+    'ITIL-процессы',
+    'Настройки и интеграции',
+    'Искусственный интеллект'
+  ]
+  const tariffPlans =[
+    {
+      title: 'Старт',
+      description: 'Подходит для ознакомления с продуктом до 2 инженеров',
+      icons: ['icon_list.svg'],
+      price: 'Бесплатно',
+      period: 'навсегда',
+      fills: [65, 25, 25, 0, 0, 0, 0, 25, 0],
+      button: 'secondary-light',
+      detailsButton: 'outline'
+    },
+    {
+      title: 'Бизнес',
+      badge: 'Хит продаж',
+      bestseller: true,
+      description: 'Подходит для небольшого ИТ-отдела компании',
+      icons: ['icon_cloud.svg'],
+      oldPrice: '24 900',
+      price: '19 920',
+      unit: '₽/мес.',
+      period: 'при оплате за год',
+      fills: [100, 100, 75, 100, 100, 0, 100, 86, 62],
+      button: 'secondary-dark',
+      detailsButton: 'outline-medium'
+    },
+    {
+      title: 'Профессионал',
+      description: 'Зрелый ИТ-отдел с разработкой и полным ИИ',
+      icons: ['icon_cloud.svg', 'icon_list.svg'],
+      oldPrice: '59 900',
+      price: '47 920',
+      unit: '₽/мес.',
+      period: 'при оплате за год',
+      fills: [100, 100, 75, 100, 100, 86, 100, 100, 86],
+      button: 'secondary-light',
+      detailsButton: 'outline'
+    },
+    {
+      title: 'Корпоративный',
+      description: 'Для крупного бизнеса или гос. учреждений',
+      icons: ['icon_cloud.svg', 'icon_list.svg'],
+      price: 'По запросу',
+      period: 'индивидуально',
+      fills: [100, 100, 100, 100, 100, 100, 100, 100, 100],
+      button: 'secondary-light',
+      detailsButton: 'outline'
+    }
+  ]
+  const tariffBenefits =[
+    ['Безопасность', 'Данные в Yandex Cloud, 152-ФЗ, шифрование, аудит', 'benefits_1.png'],
+    ['Никаких рисков', 'Начните бесплатно, платите только когда вырастете', 'benefits_2.png'],
+    ['Всё в одном', 'Service Desk, CMDB, разработка, ИИ — в одной платформе', 'benefits_3.png']
+  ]
+
+mixin tariffs(mods)
+  -
+    const baseName = 'tariffs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.tariffs(class=allMods)&attributes(attributes)
+    .inner
+      +section-head('Тарифные планы', 'Подберите тариф подходящий именно для ваших бизнес-задач и&nbsp;процессов, не&nbsp;переплачивая за&nbsp;лишний функционал', '--center')
+        +badge('Акция «Тест-драйв»: любой тариф на&nbsp;6&nbsp;месяцев бесплатно', 'tariffs, --color-orange, --size-large')
+      .tariffs__cards
+        each plan in tariffPlans
+          .tariffs__cards-item
+            .tariffs-plan(class=plan.bestseller ? 'tariffs-plan--bestseller' : '')
+              .tariffs-plan__top-box
+                .tariffs-plan__title-row
+                  +ui-h6(plan.title, 'tariffs-plan', 'div')
+                  if plan.badge
+                    +badge(plan.badge, 'tariffs-plan, --color-blue, --size-small')
+                  .tariffs-plan__icons
+                    each icon in plan.icons
+                      .tariffs-plan__icon
+                        img(src=`../../images/icons/${icon}` alt='')
+                +ui-p1(plan.description).tariffs-plan__description
+                .tariffs-plan__price-box
+                  .tariffs-plan__price
+                    if plan.oldPrice
+                      .tariffs-plan__price-old=plan.oldPrice
+                    .tariffs-plan__price-new
+                      | #{plan.price}
+                      if plan.unit
+                        |  
+                        span.tariffs-plan__price-unit=plan.unit
+                  +ui-p1(plan.period).tariffs-plan__period
+              +ui-p2().tariffs-plan__features
+                each name, index in tariffFeatureNames
+                  .tariffs-plan__feature(data-fill=plan.fills[index])
+                    span.tariffs-plan__indicator
+                    =name
+              .tariffs-plan__actions
+                +ui-button('Выбрать план', '#contact', `--px-xxs, --py-l, --${plan.button}`)
+                +ui-button('Подробности тарифа', null, `--px-xxs, --py-l, --${plan.detailsButton}`)
+      .tariffs-benefits
+        each benefit in tariffBenefits
+          .tariffs-benefits__card
+            .tariffs-benefits__icon
+              img(src=`../../images/benefits/${benefit[2]}` alt='')
+            .tariffs-benefits__content
+              +ui-h6(benefit[0], '', 'div')
+              +ui-p1(benefit[1]).ui-grey
+      block

@@ -1,0 +1,30 @@
+.ui {
+  &-h2 {
+    margin: 0;
+    font-weight: 600;
+    @include adaptive-value(font-size, 50px, 25px);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+  &-h3 {
+    margin: 0;
+    font-weight: 600;
+    @include adaptive-value(font-size, 25px, 20px);
+  }
+  &-h4 {
+    margin: 0;
+    font-weight: 600;
+    @include adaptive-value(font-size, 25px, 18px);
+    letter-spacing: -0.037em;
+  }
+  &-h5 {
+    margin: 0;
+    font-weight: 600;
+    @include adaptive-value(font-size, 22px, 15px);
+  }
+  &-h6 {
+    margin: 0;
+    font-weight: 600;
+    @include adaptive-value(font-size, 20px, 15px);
+  }
+}

@@ -1,0 +1,33 @@
+-const headerMenu =['Решение', 'Возможности', 'Особенности', 'Тарифы', 'Размещение', 'Экспертиза', 'Запросить презентацию']
+
+mixin header(hasMenu = true, mods)
+  -
+    const baseName = 'header'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  header.header(class=allMods)&attributes(attributes)
+    .header__inner
+      .header__bar
+        if hasMenu
+          button.header__toggle(type='button')
+            span
+            span
+            span
+        a.header__logo(href='#')
+          img(src='../../images/logos/logo_u_admin.svg' alt='')
+        if hasMenu
+          .header__navigation
+            .header__menu
+              each item in headerMenu
+                .header__menu-item
+                  a(href='#')=item
+        .header__actions
+          +ui-button('Попробовать', '#contact', '--outline-extra-light')
+    block

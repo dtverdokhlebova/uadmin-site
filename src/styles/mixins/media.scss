@@ -1,0 +1,104 @@
+@use 'sass:list';
+@use 'sass:meta';
+
+@mixin media-desktop {
+  @media (max-width: ($mediaWidthDesktop - 1px)) {
+    @content;
+  }
+}
+@mixin media-laptop {
+  @media (max-width: $mediaWidthLaptop) {
+    @content;
+  }
+}
+@mixin media-tablet {
+  @media (max-width: $mediaWidthTablet) {
+    @content;
+  }
+}
+@mixin media-mobile {
+  @media (max-width: $mediaWidthMobile) {
+    @content;
+  }
+}
+@mixin media-custom($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@function design-vw($value, $design-width: $mediaWidthDesktop) {
+  @if meta.type-of($value) == 'list' {
+    $result: ();
+
+    @each $item in $value {
+      $result: list.append($result, design-vw($item, $design-width), space);
+    }
+
+    @return $result;
+  }
+
+  @if $value == 0 {
+    @return 0;
+  }
+
+  @return calc(($value / $design-width) * 100vw);
+}
+
+@mixin vw-value($property, $value, $design-width: $mediaWidthDesktop) {
+  #{$property}: design-vw($value, $design-width);
+}
+
+@function adaptive-value-at($values, $index) {
+  @if list.length($values) >= $index {
+    @return list.nth($values, $index);
+  }
+
+  @return list.nth($values, list.length($values));
+}
+
+@mixin adaptive-values($properties) {
+  @each $property, $values in $properties {
+    #{$property}: design-vw(adaptive-value-at($values, 1), $mediaWidthDesktop);
+  }
+
+  @include media-desktop {
+    @each $property, $values in $properties {
+      #{$property}: adaptive-value-at($values, 1);
+    }
+  }
+
+  @include media-laptop {
+    @each $property, $values in $properties {
+      $desktop-value: adaptive-value-at($values, 1);
+      $laptop-value: adaptive-value-at($values, 2);
+
+      @if $laptop-value != $desktop-value {
+        #{$property}: $laptop-value;
+      }
+    }
+  }
+
+  @include media-tablet {
+    @each $property, $values in $properties {
+      $small-value: adaptive-value-at($values, 2);
+      $mobile-value: adaptive-value-at($values, 3);
+
+      @if $mobile-value != $small-value {
+        #{$property}: $mobile-value;
+      }
+    }
+  }
+
+  @include media-mobile {
+    @each $property, $values in $properties {
+      #{$property}: design-vw(adaptive-value-at($values, 3), $mediaWidthMobile);
+    }
+  }
+}
+
+@mixin adaptive-value($property, $m-value, $s-value, $mobile-value: $s-value) {
+  @include adaptive-values((
+    $property: ($m-value, $s-value, $mobile-value)
+  ));
+}

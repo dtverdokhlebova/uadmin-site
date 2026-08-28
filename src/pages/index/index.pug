@@ -1,0 +1,15 @@
+extends ../../layouts/layout
+
+block variables
+  -const pageTitle = 'Страницы'
+  -const hasHeader = false
+
+block content
+  main.main
+    +section()(style='min-height: 95vh')
+      +ui-h4('Страницы', '', 'div')
+      br
+      +ui-p1()
+        a(href='./main.html') Главная
+      +ui-p1()
+        a(href='./main-2.html') Главная без меню

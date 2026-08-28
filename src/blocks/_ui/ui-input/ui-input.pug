@@ -1,0 +1,25 @@
+mixin ui-input(field, mods)
+  -
+    const baseName = 'ui-input'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-input(class=[allMods, field.className || ''])&attributes(attributes)
+    input.ui-input__control(
+      class=field.controlClassName || ''
+      id=field.id
+      name=field.name
+      type=field.type || 'text'
+      inputmode=field.inputmode
+      maxlength=field.maxlength
+      required=field.required)
+    label.ui-input__label(for=field.id)=field.label
+    if field.required
+      span.ui-input__required
+    block

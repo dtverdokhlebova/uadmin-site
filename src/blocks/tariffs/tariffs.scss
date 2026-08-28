@@ -1,0 +1,254 @@
+.tariffs {
+  &__badge {
+    margin: 0 auto;
+    @include adaptive-value(margin-top, 24px, 15px);
+    @include media-tablet {
+      max-width: design-vw(280px, $mediaWidthMobile);
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    @include adaptive-value(gap, 30px, 20px, 10px);
+    @include media-tablet {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  &-plan {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    @include adaptive-values((
+      padding: ((40px 10px 40px 10px), (24px 10px 30px 10px)),
+      border-radius: (20px, 15px)
+    ));
+    background: #fff;
+    @include card-hover;
+    &--bestseller {
+      background: linear-gradient(180deg, #030942 0%, #08286e 54%, #279cf4 100%);
+      .tariffs-plan {
+        &__icons {
+          opacity: 1;
+        }
+        &__ui-h6,
+        &__price,
+        &__price-old {
+          color: #fff;
+        }
+        &__description,
+        &__period {
+          color: rgba(255, 255, 255, 0.55);
+        }
+      }
+    }
+    &__top-box {
+      @include adaptive-values((
+        padding-right: (30px, 15px),
+        padding-left: (30px, 15px)
+      ));
+    }
+    &__title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      @include adaptive-value(margin-bottom, 10px, 5px);
+    }
+    &__description {
+      max-width: 95%;
+      @include adaptive-value(margin-bottom, 10px, 5px);
+      color: rgba(7, 18, 53, 0.45);
+    }
+    &__badge {
+      flex-shrink: 0;
+    }
+    &__icons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: auto;
+      @include adaptive-value(gap, 5px, 5px);
+      opacity: 0.9;
+    }
+    &__icon {
+      flex-shrink: 0;
+      @include adaptive-value(width, 16px, 16px);
+      img {
+        width: 100%;
+      }
+    }
+    &__price-box {
+      @include adaptive-value(margin-bottom, 24px, 24px);
+    }
+    &__price {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1ch;
+      line-height: 1;
+    }
+    &__price-old {
+      position: relative;
+      display: inline-flex;
+      font-weight: 600;
+      @include adaptive-value(font-size, 18px, 15px);
+      &::after {
+        content: '';
+        position: absolute;
+        top: 25%;
+        right: -2px;
+        left: -2px;
+        height: 2px;
+        background: $orange;
+        transform: rotate(8deg);
+        transform-origin: left top;
+      }
+    }
+    &__price-new {
+      font-weight: 600;
+      @include adaptive-value(font-size, 30px, 25px);
+      line-height: 1.2;
+      @include media-laptop {
+        width: 100%;
+      }
+      @include media-tablet {
+        width: auto;
+      }
+    }
+    &__price-unit {
+      font-size: 0.55em;
+    }
+    &__period {
+      margin-top: 4px;
+      color: rgba(7, 18, 53, 0.45);
+    }
+    &__features {
+      display: grid;
+      flex: 1 1 auto;
+      grid-template-columns: minmax(0, 1fr);
+      align-content: start;
+      @include adaptive-values((
+        gap: (25px, 25px, 16px),
+        padding: (30px, 15px),
+        border-radius: (10px, 10px)
+      ));
+      background: $bgLight;
+      @include media-tablet {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    &__feature {
+      --tariffs-feature-fill: 0%;
+      display: flex;
+      @include adaptive-value(gap, 12px, 12px);
+      word-break: break-word;
+      color: rgba(7, 18, 53, 0.45);
+      &[data-fill='0'] {
+        color: rgba(7, 18, 53, 0.2);
+      }
+    }
+    &__indicator {
+      position: relative;
+      flex-shrink: 0;
+      @include adaptive-values((
+        width: (20px, 20px),
+        height: (20px, 20px)
+      ));
+      overflow: hidden;
+      border-radius: 50%;
+      background: #D8DBE6;
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: conic-gradient(from 0deg at 50% 50%, #2A9FFF 0deg, #003E9C 180deg, #000433 360deg);
+        -webkit-mask: conic-gradient(
+          from 0deg,
+          transparent 0 calc(100% - var(--tariffs-feature-fill)),
+          #000 calc(100% - var(--tariffs-feature-fill)) 100%
+        );
+        mask: conic-gradient(
+          from 0deg,
+          transparent 0 calc(100% - var(--tariffs-feature-fill)),
+          #000 calc(100% - var(--tariffs-feature-fill)) 100%
+        );
+      }
+    }
+    &__actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      @include adaptive-values((
+        gap: (15px, 10px, 10px),
+        margin-top: (20px, 20px),
+        padding-right: (10px, 14px),
+        padding-left: (10px, 14px)
+      ));
+      @include media-tablet {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+}
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: ($mediaWidthTablet + 1px)) {
+    .tariffs__cards {
+      grid-template-rows: repeat(5, auto);
+      row-gap: 0;
+    }
+    .tariffs__cards-item,
+    .tariffs-plan {
+      display: grid;
+      grid-row: 1 / span 5;
+      grid-template-rows: subgrid;
+    }
+    .tariffs-plan__top-box {
+      display: grid;
+      grid-row: 1 / span 3;
+      grid-template-rows: subgrid;
+    }
+  }
+}
+.tariffs-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  @include adaptive-values((
+    gap: (65px, 40px),
+    margin-top: (80px, 30px)
+  ));
+  align-items: start;
+  max-width: 78%;
+  margin-right: auto;
+  margin-left: auto;
+  @include media-tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px 30px;
+    max-width: 100%;
+    margin-top: 38px;
+    padding: 0 25px;
+  }
+  &__card {
+    display: flex;
+    @include adaptive-value(gap, 20px, 12px);
+    @include media-tablet {
+      flex-direction: column;
+    }
+    &:nth-child(3) {
+      @include media-tablet {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+  &__icon {
+    flex-shrink: 0;
+    @include adaptive-value(width, 40px, 28px);
+    img {
+      width: 100%;
+    }
+  }
+  &__content {
+    display: grid;
+    @include adaptive-value(gap, 6px, 8px);
+  }
+}

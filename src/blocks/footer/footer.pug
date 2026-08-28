@@ -1,0 +1,20 @@
+mixin footer(mods)
+  -
+    const baseName = 'footer'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  footer.footer(class=allMods)&attributes(attributes)
+    .footer__meta
+      p © ООО Актив софт, 2026
+      p 111123, Москва, шоссе Энтузиастов, д. 31, стр. 39, 5 этаж, офис 2
+    .footer__links
+      a.footer__link(href='#') Политика конфиденциальности
+      a.footer__link(href='#') Пользовательское соглашение
+    block

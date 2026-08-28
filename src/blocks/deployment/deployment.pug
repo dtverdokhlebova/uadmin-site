@@ -1,0 +1,58 @@
+-
+  const deploymentCards =[
+    {
+      title: 'On-premise',
+      subtitle: 'В вашей инфраструктуре',
+      image: 'deployment_1.png',
+      description: 'U-Admin разворачивается на серверах вашей компании или в закрытом контуре. Данные, база PostgreSQL и приложение остаются внутри вашей инфраструктуры.',
+      conditions: [
+        'Требуется полный контроль над данными и инфраструктурой;',
+        'Действуют внутренние требования информационной безопасности;',
+        'Система должна работать в закрытом контуре;',
+        'Необходима интеграция с корпоративной инфраструктурой.'
+      ]
+    },
+    {
+      title: 'Cloud',
+      subtitle: 'В облачной инфраструктуре',
+      image: 'deployment_2.png',
+      description: 'U-Admin на виртуальных машинах в выбранной облачной инфраструктуре. Масштабируйте вычислительные ресурсы по мере роста количества пользователей, обращений и объектов учёта.',
+      conditions: [
+        'Не хотите закупать собственное серверное оборудование;',
+        'Нужно быстро подготовить инфраструктуру;',
+        'Требуется гибко увеличивать ресурсы;',
+        'Используется корпоративная облачная инфраструктура.'
+      ]
+    }
+  ]
+
+mixin deployment(mods)
+  -
+    const baseName = 'deployment'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.deployment(class=allMods)&attributes(attributes)
+    .inner
+      +section-head('Разверните U-Admin так, как удобно вашей инфраструктуре', 'В собственной инфраструктуре или в облаке — выберите вариант размещения под требования вашей компании, политики безопасности и планируемую нагрузку', '--center')
+      .deployment__grid
+        each card in deploymentCards
+          .deployment-card
+            .deployment-card__top
+              .deployment-card__head
+                .deployment-card__titles
+                  +ui-h3(card.title, 'deployment-card', 'div')
+                  +ui-p1(card.subtitle).deployment-card__subtitle
+                +ui-p1(card.description).ui-grey
+              .deployment-card__img
+                img(src=`../../images/deployment/${card.image}` alt='')
+            .deployment-card__conditions
+              +ui-p2('Подходит, если:')
+              +ui-list(card.conditions, 2).ui-grey
+      block

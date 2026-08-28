@@ -1,0 +1,93 @@
+-
+  const capabilityHighlights =[
+    ['Приём заявок', 'capabilities_1.png'],
+    ['Удаленный доступ', 'capabilities_2.png'],
+    ['Учёт оборудования', 'capabilities_3.png'],
+    ['AI-помощник', 'capabilities_4.png']
+  ]
+  const capabilityColumns =[
+    {
+      side: 'left', order: 4,
+      items: [
+        ['Каталог<br>услуг', 'icon_catalog.svg'],
+        ['SLA', 'icon_sla.svg'],
+        ['База знаний', 'icon_catalog.svg'],
+        ['Шаблоны<br>заявок', 'icon_request_templates.svg']
+      ]
+    },
+    {
+      side: 'left', order: 1,
+      items: [
+        ['Глобальный<br>поиск', 'icon_global_search.svg'],
+        ['Отчеты', 'icon_reports.svg'],
+        ['Комментарии', 'icon_comments.svg'],
+        ['Затраты', 'icon_costs.svg']
+      ]
+    },
+    {
+      side: 'right', order: 2,
+      items: [
+        ['История<br>изменений', 'icon_change_history.svg'],
+        ['Задачи', 'icon_tasks.svg'],
+        ['Журнал<br>событий', 'icon_event_log.svg'],
+        ['API', 'icon_api.svg']
+      ]
+    },
+    {
+      side: 'right', order: 3,
+      items: [
+        ['CMDB', 'icon_cmdb.svg'],
+        ['Канбан', 'icon_kanban.svg'],
+        ['Приоритеты', 'icon_priorities.svg'],
+        ['Пользователи', 'icon_users.svg']
+      ]
+    }
+  ]
+
+mixin capability-small(item, mods)
+  -
+    const baseName = 'capabilities__box'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  a.capabilities__box.capabilities__box--small(class=allMods href='#')&attributes(attributes)
+    .capabilities__icon
+      img(src=`../../images/icons/${item[1]}` alt='')
+    +ui-p2(item[0])
+    block
+
+mixin capabilities(mods)
+  -
+    const baseName = 'capabilities'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.capabilities(class=allMods)&attributes(attributes)
+    .inner
+      +section-head('Функциональные возможности', 'Более 50 модулей в одном пакете для повышения производительности труда <nobr>ИТ-отдела</nobr> и&nbsp;замены фрагментарного ПО', '--center')
+      .capabilities__layout
+        .capabilities__grid.capabilities__grid--main
+          each item in capabilityHighlights
+            a.capabilities__box.capabilities__box--big(href='#')
+              .capabilities__img
+                img(src=`../../images/capabilities/${item[1]}` alt='')
+              +ui-h6(item[0], '', 'div')
+        each side in ['left', 'right']
+          div(class=`capabilities__grid capabilities__grid--compact capabilities__grid--compact-${side}`)
+            each column in capabilityColumns.filter((entry) => entry.side ===side)
+              div(class=`capabilities__column capabilities__column--mobile-order-${column.order}`)
+                each item in column.items
+                  +capability-small(item)
+      block

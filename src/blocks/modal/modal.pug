@@ -1,0 +1,22 @@
+mixin modal(options = {}, mods)
+  -
+    const baseName = 'modal'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const closeLabel = options.closeLabel || 'Закрыть модальное окно'
+    const modalClasses = [allMods].concat(options.classes || [])
+    const modalAttributes = Object.assign({}, options.attributes || {}, attributes || {})
+
+  .modal.js-modal(id=options.id class=modalClasses role='dialog' aria-modal='true' aria-hidden='true' aria-labelledby=options.labelledby aria-describedby=options.describedby tabindex='-1' hidden)&attributes(modalAttributes)
+    .modal__backdrop.js-modal-close(aria-hidden='true')
+    .modal__body
+      button.modal__close.js-modal-close(type='button' aria-label=closeLabel)
+        span(aria-hidden='true') ×
+      .modal__scroll
+        block

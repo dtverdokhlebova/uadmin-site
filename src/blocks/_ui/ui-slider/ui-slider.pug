@@ -1,0 +1,17 @@
+mixin ui-slider-controls(mods)
+  -
+    const baseName = 'ui-slider-controls'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-slider-controls(class=allMods)&attributes(attributes)
+    button.ui-slider-button.ui-slider-button--prev(type='button')
+    .ui-slider-pagination
+    button.ui-slider-button.ui-slider-button--next(type='button')
+    block

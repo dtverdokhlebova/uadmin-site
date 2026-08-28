@@ -1,0 +1,49 @@
+-
+  const featureTitles =[
+    'Единая платформа управления ИТ',
+    'Service Desk нового поколения',
+    'CMDB и управление активами',
+    'Управление картриджами',
+    'Цифровой двойник инфраструктуры',
+    'Карта сотрудников и рабочих мест',
+    'Автоматизация внутренних процессов',
+    'Отчеты и аналитика',
+    'Аудит безопасности'
+  ]
+  const featureItems =[
+    'Единый Service Desk и портал самообслуживания',
+    'ITAM и CMDB с полным жизненным циклом активов',
+    'Управление инфраструктурой и серверами',
+    'Tenant-архитектура для холдингов и сервисных компаний'
+  ]
+
+mixin features(mods)
+  -
+    const baseName = 'features'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.features(class=allMods)&attributes(attributes)
+    .inner
+      +section-head('Ключевые особенности', 'Безопасное управление железом, поддержкой и разработкой', '--center')
+      .swiper.features__slider
+        .features__main.swiper-wrapper
+          each title, index in featureTitles
+            .features__item.swiper-slide
+              .features__img
+                img(src=`../../images/features/features_${index + 1}.jpg` alt='')
+              .features__content
+                +ui-h3(title, 'features')
+                +ui-text().ui-grey
+                  +ui-p1('Все процессы ИТ-службы — в одной системе:')
+                  +ui-list(featureItems, 1)
+                  +ui-p1('ИИ-анализ влияния изменений — определяет, какие пользователи, сервисы и бизнес-процессы пострадают при изменении любого объекта CMDB')
+        .features__controls
+          +ui-slider-controls().features__controls-inner
+      block

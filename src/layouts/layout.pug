@@ -1,0 +1,24 @@
+include ../blocks/mixins
+include ../blocks/header/header
+include ../blocks/footer/footer
+
+block variables
+  -const pageTitle ='U-Admin'
+  -const hasHeader =true
+
+doctype html
+html(lang='ru')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
+    title=pageTitle
+    link(rel='stylesheet' href='/libs/swiper/swiper-bundle.min.css')
+    link(rel='stylesheet' href='../../styles/style.scss')
+  body.body
+    block header
+      if hasHeader
+        +header()
+    block content
+    script(src='/libs/swiper/swiper-bundle.min.js')
+    script(src='/libs/just-validate/just-validate.production.min.js')
+    script(type='module' src='../../js/index.js')

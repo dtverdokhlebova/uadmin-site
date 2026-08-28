@@ -1,0 +1,28 @@
+.ui-error {
+  display: block;
+  font-weight: 500;
+  &--float {
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+    max-width: 85%;
+    @include adaptive-values((
+      margin-top: (-8px, -4px),
+      left: (20px, 15px),
+      padding: ((2px 5px 2px 5px), (1px 3px 1px 3px)),
+      font-size: (12px, 10px),
+      border-radius: (3px, 3px)
+    ));
+    background-color: #ff6236;
+    color: #fff;
+    line-height: 1.3;
+  }
+  &--static {
+    @include adaptive-values((
+      margin-top: (7px, 7px),
+      font-size: (12px, 10px)
+    ));
+    color: #ff6236;
+    line-height: 1.3;
+  }
+}

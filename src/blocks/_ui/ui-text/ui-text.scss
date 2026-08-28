@@ -1,0 +1,13 @@
+.ui {
+  &-grey {
+    color: $grey;
+  }
+  &-text {
+    .ui-p1,
+    .ui-ul {
+      &:not(:last-child) {
+        @include adaptive-value(margin-bottom, 15px, 15px);
+      }
+    }
+  }
+}

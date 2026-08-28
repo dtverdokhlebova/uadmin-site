@@ -1,0 +1,40 @@
+-const partnerLogos =['logo-gridcom-rt.svg', 'logo-lanit.svg', 'logo-rhc.svg', 'logo-gazprom.svg', 'logo-cbr.svg']
+
+mixin banner(mods)
+  -
+    const baseName = 'banner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.section--pd0.banner(class=allMods data-header-float-after)&attributes(attributes)
+    .inner.banner__inner
+      .banner__container
+        .banner__scene
+          img.banner__landscape(src='../../images/banner/landscape.png' alt='')
+          img.banner__landscape-foreground(src='../../images/banner/landscape-foreground.png' alt='')
+        .banner__content
+          .banner__head
+            h1.banner__title U-Admin помогает ИТ-отделу работать
+            .banner__description
+              | Заявки, оборудование, автоматическая инвентаризация, удалённая поддержка, база знаний, проекты и ИИ — в одной системе. Весь необходимый функционал — в бесплатной версии.
+          .banner__actions
+            +ui-button('Скачать бесплатно', '#contact', '--primary, banner')
+            +ui-button('Обсудить проект', '#contact', '--secondary, banner')
+        .banner__visual
+          .banner__desktop-media
+            .banner__desktop-screenshot
+              img(src='../../images/banner/desktop-screenshot.jpg' alt='')
+          picture.banner__app-media
+            source(media='(max-width: 1619px)' srcset='../../images/banner/app-screenshot-compact.png')
+            img.banner__app-screenshot(src='../../images/banner/app-screenshot.png' alt='')
+        .banner-partners
+          each logo in partnerLogos
+            .banner-partners__item
+              img(src=`../../images/logos/${logo}` alt='')
+      block

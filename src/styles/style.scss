@@ -1,0 +1,30 @@
+@import 'utils/fonts';
+@import 'utils/variables';
+@import 'mixins/media';
+@import 'mixins/mixins';
+@import '../layouts/layout';
+
+@import '../blocks/_ui/ui-h/ui-h';
+@import '../blocks/_ui/ui-p/ui-p';
+@import '../blocks/_ui/ui-list/ui-list';
+@import '../blocks/_ui/ui-text/ui-text';
+@import '../blocks/_ui/ui-slider/ui-slider';
+@import '../blocks/_ui/ui-input/ui-input';
+@import '../blocks/_ui/ui-error/ui-error';
+@import '../blocks/_ui/ui-checkbox/ui-checkbox';
+@import '../blocks/_ui/ui-button/ui-button';
+
+@import '../blocks/badge/badge';
+@import '../blocks/capabilities/capabilities';
+@import '../blocks/contact/contact';
+@import '../blocks/deployment/deployment';
+@import '../blocks/experts/experts';
+@import '../blocks/features/features';
+@import '../blocks/footer/footer';
+@import '../blocks/header/header';
+@import '../blocks/banner/banner';
+@import '../blocks/modal/modal';
+@import '../blocks/section/section';
+@import '../blocks/section-head/section-head';
+@import '../blocks/solution/solution';
+@import '../blocks/tariffs/tariffs';

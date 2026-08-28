@@ -1,0 +1,40 @@
+-
+  const experts =[
+    ['Андрей Боганов', 'ITSM/ITAM-процессный архитектор', 'experts_boganov_a.jpg'],
+    ['Игорь Иванчиков', 'Генеральный директор<br>«Active Computers»', 'experts_ivanchikov_i.jpg']
+  ]
+
+mixin experts(mods)
+  -
+    const baseName = 'experts'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.experts(class=allMods)&attributes(attributes)
+    .inner
+      .experts__wrapper
+        .experts__main
+          .section-head.section-head--max-w-0
+            .experts__icon
+              img(src='../../images/experts/experts_icon.png' alt='')
+            +ui-h2('Экспертиза, на которой построен U-Admin', 'section-head')
+            +ui-h5('', 'section-head', 'div')
+              | Продукт создан командой, в&nbsp;которую входят: соавторы ITIL, ведущие эксперты России по&nbsp;ITSM и&nbsp;ITAM, действующие ИТ-директора крупных предприятий, победители конкурса «ITSM-проект года».
+        .experts__gallery
+          .experts__bg
+            img(src='../../images/experts/experts_bg.svg' alt='')
+          .experts-cards
+            each expert in experts
+              .experts-cards__item
+                .experts-cards__photo
+                  img(src=`../../images/experts/${expert[2]}` alt='')
+                .experts-cards__body
+                  +ui-h6(expert[0], 'experts-cards', 'div')
+                  +ui-p2(expert[1]).ui-grey
+      block

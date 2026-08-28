@@ -1,0 +1,66 @@
+.ui-checkbox {
+  @include adaptive-values((
+    --ui-checkbox-size: (25px, 25px),
+    gap: (15px, 13px)
+  ));
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  &:hover .ui-checkbox__box {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  &:hover .ui-checkbox__input:checked + .ui-checkbox__box {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    &:checked + .ui-checkbox__box {
+      background: rgba(255, 255, 255, 0.2);
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+  &__box {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--ui-checkbox-size);
+    height: var(--ui-checkbox-size);
+    @include adaptive-values((
+      border-radius: (5px, 5px)
+    ));
+    background: rgba(255, 255, 255, 0.2);
+    transition: $transitionDuration;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' fill='none'%3E%3Cpath fill='%23fff' d='m10 19-5-4.68 1.75-1.64L10 15.724 18.25 8 20 9.638z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: $transitionDuration;
+    }
+  }
+  &__text {
+    @include adaptive-values((
+      font-size: (17px, 15px)
+    ));
+  }
+  &--white {
+    a {
+      color: rgba(255, 255, 255, 0.5);
+      &:hover,
+      &:focus-visible {
+        color: #ff5323;
+      }
+    }
+  }
+}

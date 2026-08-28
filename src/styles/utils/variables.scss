@@ -1,0 +1,19 @@
+:root {
+  --inner-pd: 15px;
+  --inner-pd-mob: 25px;
+}
+
+$white60: rgba(255, 255, 255, 0.6);
+$black: #292f3f;
+$grey: rgba(7, 18, 53, 0.45);
+$orange: #ff6236;
+$orangeButton: #ff5323;
+$boxShadow: 0 2px 2px rgba(10, 53, 132, 0.1);
+$bgLight: #edeff8;
+$gradientBg: linear-gradient(180deg, #000433 0%, #003e9c 50%, #2a9fff 100%);
+$transitionDuration: 0.2s;
+
+$mediaWidthDesktop: 1920px;
+$mediaWidthLaptop: 1619px;
+$mediaWidthTablet: 1029px;
+$mediaWidthMobile: 414px;

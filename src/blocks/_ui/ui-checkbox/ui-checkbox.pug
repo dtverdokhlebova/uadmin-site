@@ -1,0 +1,17 @@
+mixin ui-checkbox(options = {}, mods)
+  -
+    const baseName = 'ui-checkbox'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  label.ui-checkbox(class=allMods)&attributes(attributes)
+    input.ui-checkbox__input(class=options.inputClasses || '' id=options.id name=options.name type='checkbox' required=options.required)
+    span.ui-checkbox__box
+    span.ui-checkbox__text
+      block

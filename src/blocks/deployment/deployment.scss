@@ -1,0 +1,66 @@
+.deployment {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include adaptive-value(gap, 30px, 20px, 10px);
+    @include media-tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+  &-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+    @include adaptive-values((
+      gap: (35px, 15px),
+      padding: ((40px 40px 50px 40px), (20px 10px 30px 10px)),
+      border-radius: (20px, 15px)
+    ));
+    background-color: #fff;
+    @include card-hover;
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      @include media-laptop {
+        padding: 0 15px;
+      }
+    }
+    &__head {
+      max-width: 71%;
+    }
+    &__titles {
+      &:not(:last-child) {
+        @include adaptive-value(margin-bottom, 16px, 12px);
+      }
+    }
+    &__description {
+      margin: 20px 0 26px;
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+    &__img {
+      flex-shrink: 0;
+      width: 20%;
+      @include media-tablet {
+        max-width: 80px;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    &__conditions {
+      @include adaptive-values((
+        padding: ((20px 30px 20px 30px), (18px 15px 18px 15px)),
+        border-radius: (10px, 10px)
+      ));
+      background-color: $bgLight;
+      .ui-p2,
+      .ui-ul li {
+        &:not(:last-child) {
+          @include adaptive-value(margin-bottom, 6px, 12px);
+        }
+      }
+    }
+  }
+}

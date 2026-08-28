@@ -1,0 +1,19 @@
+extends ../../layouts/layout
+
+block variables
+  -const pageTitle ='U-Admin'
+  -const hasHeader =true
+
+block header
+  +header(false)
+
+block content
+  main.main
+    +banner()
+    +solution()
+    +capabilities()
+    +features()
+    +tariffs()
+    +deployment()
+    +experts()
+    +contact()

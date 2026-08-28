@@ -1,0 +1,8 @@
+.ui {
+  &-p1 {
+    @include adaptive-value(font-size, 18px, 15px);
+  }
+  &-p2 {
+    @include adaptive-value(font-size, 16px, 15px);
+  }
+}

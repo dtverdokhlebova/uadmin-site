@@ -1,0 +1,6 @@
+/dist
+/src/public
+
+gulpfile.js
+postcss.config.js
+vite.config.js

@@ -1,0 +1,26 @@
+@mixin horizontal-scroll {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin card-hover(
+  $shadow: $boxShadow,
+  $hover-shadow: 0 10px 12px rgba(10, 53, 132, 0.1),
+  $lift: 10px
+) {
+  box-shadow: $shadow;
+  transition: $transitionDuration ease;
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: $hover-shadow;
+      transform: translateY(-$lift);
+    }
+  }
+}

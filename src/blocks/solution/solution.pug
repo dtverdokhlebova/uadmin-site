@@ -1,0 +1,50 @@
+-
+  const solutionCards =[
+    {
+      title: 'ИТ-безопасность без компромиссов',
+      description: 'Все данные — в защищенном контуре Yandex Cloud с шифрованием и аудитом доступа. Хранение в РФ соответствует 152-ФЗ, персональные данные не покидают страну. Пароли к оборудованию хранятся в зашифрованном виде с журналом раскрытия. Вы получаете безопасность уровня корпорации, не нанимая отдельного специалиста по Infosec.',
+      image: 'solutions_2.png'
+    },
+    {
+      title: 'Отсутствие финансовых рисков при внедрении',
+      description: 'Бесплатный тариф с полноценным функционалом для команды до 5–10 пользователей. Вы не платите за внедрение, не покупаете лицензии и не подписываете долгосрочные контракты. Если не подойдет — просто уходите. Единственное, что вы рискуете потерять, — это хаос в Excel-инвентаризации.',
+      image: 'solutions_3.png'
+    },
+    {
+      title: 'Управляйте «железом», поддержкой и разработкой',
+      description: 'Полноценный CMDB с инвентаризацией, актами передачи, историей и сетевыми проверками (Ping/SSH). Service Desk с ИИ-помощником, базой знаний и SLA. Встроенный инструмент для разработки с бэклогом, спринтами и канбаном. Всё, что нужно ИТ-отделу, — без лишних модулей для продаж и CRM.',
+      image: 'solutions_4.png'
+    }
+  ]
+
+mixin solution(mods)
+  -
+    const baseName = 'solution'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.section--mob-overlap-banner.solution(class=allMods)&attributes(attributes)
+    .inner
+      +section-head('Идеальное решение для бизнеса', 'Безопасное управление железом, поддержкой и разработкой', '--center')
+      .solution__main
+        .solution-card.solution-card--main
+          .solution-card__content
+            +ui-h4('', 'solution-card', 'div').ui-grey
+              | U-Admin — это бесплатная облачная платформа, которая объединяет Service Desk, управление активами (CMDB) и&nbsp;задачи разработки. Все данные хранятся в&nbsp;российском облаке Yandex Cloud, что гарантирует соответствие 152-ФЗ и&nbsp;защиту от&nbsp;санкционных рисков. А&nbsp;бесплатный тариф позволяет начать без согласования бюджета — вы ничего не теряете, пробуя нас.
+          .solution-card__img
+            img(src='../../images/solutions/solutions_1.png' alt='')
+        .solution__slider
+          each card in solutionCards
+            .solution-card.solution-card--secondary
+              .solution-card__content
+                +ui-h3(card.title, 'solution-card', 'div')
+                +ui-p1(card.description).ui-grey
+              .solution-card__img
+                img(src=`../../images/solutions/${card.image}` alt='')
+      block

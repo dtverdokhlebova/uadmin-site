@@ -1,0 +1,26 @@
+.section-head {
+  max-width: 62%;
+  @include adaptive-value(margin-bottom, 60px, 25px);
+  @include media-tablet {
+    max-width: 100%;
+    padding-right: var(--inner-pd-mob);
+    padding-left: var(--inner-pd-mob);
+  }
+  &__ui-h2 {
+    @include adaptive-value(margin-bottom, 20px, 16px);
+  }
+  &__ui-h5 {
+    color: $grey;
+  }
+  &--max-w-0 {
+    max-width: unset;
+  }
+  &--center {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    @include media-tablet {
+      text-align: left;
+    }
+  }
+}

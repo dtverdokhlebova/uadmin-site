@@ -1,0 +1,35 @@
+mixin ui-p1(text, mods)
+  -
+    const baseName = 'ui-p1'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        const modifier = element.trim()
+        allMods += modifier[0] === '-' ? ` ${baseName}${modifier}` : ` ${modifier}__${baseName}`
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-p1(class=allMods)&attributes(attributes)
+    if typeof text !== 'undefined' && text !== null
+      !=text
+    block
+
+mixin ui-p2(text, mods)
+  -
+    const baseName = 'ui-p2'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        const modifier = element.trim()
+        allMods += modifier[0] === '-' ? ` ${baseName}${modifier}` : ` ${modifier}__${baseName}`
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-p2(class=allMods)&attributes(attributes)
+    if typeof text !== 'undefined' && text !== null
+      !=text
+    block

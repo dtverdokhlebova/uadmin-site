@@ -1,0 +1,190 @@
+.banner {
+  position: relative;
+  color: #fff;
+  background: $gradientBg;
+  overflow: hidden;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include adaptive-values((
+      padding-top: (175px, 88px),
+      padding-bottom: (80px, 50px, 88px)
+    ));
+    @include media-tablet {
+      padding-right: var(--inner-pd-mob);
+      padding-left: var(--inner-pd-mob);
+    }
+  }
+  &__scene {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      background: linear-gradient(180deg, #000433 0%, #003E9C 50%, #2A9FFF 100%);
+    }
+  }
+  &__landscape,
+  &__landscape-foreground {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    object-position: center bottom;
+    pointer-events: none;
+    user-select: none;
+    @include media-tablet {
+      left: 50%;
+      width: auto;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+  }
+  &__landscape {
+    z-index: 3;
+    bottom: 0;
+  }
+  &__landscape-foreground {
+    z-index: 4;
+    bottom: -1px;
+  }
+  &__content {
+    position: relative;
+    z-index: 6;
+    @include adaptive-value(margin-bottom, 80px, 60px);
+  }
+  &__head {
+    @include adaptive-value(margin-bottom, 34px, 25px);
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    @include media-tablet {
+      max-width: 100%;
+      text-align: left;
+    }
+  }
+  &__title {
+    margin-top: 0;
+    @include adaptive-values((
+      margin-bottom: (18px, 16px),
+      font-size: (58px, 25px)
+    ));
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  &__description {
+    max-width: 59%;
+    margin: 0 auto;
+    @include adaptive-value(font-size, 22px, 15px);
+    line-height: 1.3;
+    @include media-tablet {
+      max-width: 100%;
+    }
+  }
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include adaptive-value(gap, 20px, 10px);
+    @include media-tablet {
+      justify-content: left;
+    }
+  }
+  &__visual {
+    position: relative;
+    z-index: 3;
+    margin: 0 auto;
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-areas: 'main';
+  }
+  &__desktop-media {
+    grid-area: main;
+  }
+  &__desktop-screenshot {
+    position: relative;
+    @include adaptive-values((
+      width: (1000px, 560px),
+    ));
+    @include media-tablet {
+      width: 93%;
+    }
+    &::after {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 44%;
+      background: linear-gradient(180deg, rgba(9, 86, 225, 0) 0%, rgba(5, 47, 123, 0.5) 100%);
+      pointer-events: none;
+      content: '';
+    }
+    img {
+      width: 100%;
+      @include adaptive-value(border-radius, 20px, 15px, 8px);
+      pointer-events: none;
+    }
+  }
+  &__app-media {
+    position: relative;
+    grid-area: main;
+    display: block;
+    z-index: 1;
+    margin-left: auto;
+    @include adaptive-values((
+      width: (434px, 220px),
+      margin-top: (70px, 60px),
+      margin-right: (-110px, -60px)
+    ));
+    aspect-ratio: 0.95;
+    overflow: hidden;
+    @include media-tablet {
+      width: 42%;
+      margin-top: 10%;
+      margin-right: -5%;
+      aspect-ratio: 0.7;
+    }
+    img {
+      width: 100%;
+      max-height: unset;
+      pointer-events: none;
+    }
+  }
+}
+.banner-partners {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  @include adaptive-values((
+    column-gap: (80px, 50px),
+    row-gap: (30px, 20px),
+    margin-top: (20px, 20px)
+  ));
+  &__item {
+    flex: auto;
+    @include adaptive-values((
+      max-width: (134px, 95px),
+    ));
+    @include media-desktop {
+      flex: unset;
+    }
+    img {
+      width: 100%;
+      @include adaptive-values((
+        max-height: (44px, 20px)
+      ));
+      @include media-desktop {
+        width: auto;
+      }
+    }
+  }
+}
