@@ -13,10 +13,11 @@ mixin modal(options = {}, mods)
     const modalClasses = [allMods].concat(options.classes || [])
     const modalAttributes = Object.assign({}, options.attributes || {}, attributes || {})
 
-  .modal.js-modal(id=options.id class=modalClasses role='dialog' aria-modal='true' aria-hidden='true' aria-labelledby=options.labelledby aria-describedby=options.describedby tabindex='-1' hidden)&attributes(modalAttributes)
-    .modal__backdrop.js-modal-close(aria-hidden='true')
+  .modal.js-modal.is-visible(id=options.id class=modalClasses hidden)&attributes(modalAttributes)
+    .modal__backdrop.js-modal-close
     .modal__body
-      button.modal__close.js-modal-close(type='button' aria-label=closeLabel)
-        span(aria-hidden='true') ×
-      .modal__scroll
+      +ui-button('', '', 'modal, --secondary-dark, --icon').js-modal-close(type='button')
+        +svg()
+          include ../../images/icon_cross.svg
+      .modal__container
         block

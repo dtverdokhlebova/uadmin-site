@@ -125,6 +125,7 @@
       pointer-events: none;
       content: '';
     }
+    video,
     img {
       width: 100%;
       @include adaptive-value(border-radius, 20px, 15px, 8px);

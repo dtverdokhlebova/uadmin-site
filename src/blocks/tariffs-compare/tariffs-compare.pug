@@ -1,0 +1,220 @@
+mixin tariffs-compare(mods)
+  -
+    const baseName = 'tariffs-compare'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+    const comparisonPlans = [
+      { title: 'Старт' },
+      { title: 'Бизнес', badge: 'Хит продаж', highlighted: true },
+      { title: 'Профессионал' },
+      { title: 'Корпоративный' }
+    ]
+    const highlightedPlanIndex = comparisonPlans.findIndex((plan) => plan.highlighted)
+    const mutedValue = (value) => ({ value, muted: true })
+    const comparisonGroups = [
+      {
+        rows: [
+          ['Для кого подойдёт', mutedValue('Знакомство, 2 инженера'), mutedValue('ИТ-отдел: Service Desk + CMDB + ИИ'), mutedValue('Зрелый ИТ: + разработка, полный ИИ'), mutedValue('On-premise, удалённое управление, безопасность')],
+          ['Цена, ₽/мес (помесячно)', '0', '24 900', '59 900', 'по запросу'],
+          ['Цена, ₽/мес (при оплате за год)', '0', '19 920', '47 920', 'индивидуально'],
+          ['Экономия на годовой оплате, ₽/год', false, '59 760', '143 760', false],
+          ['Годовая скидка (параметр расчёта)', '0%', '20%', '20%', '30%'],
+          ['Инженеров (агентов) в тарифе', '2', 'до 10', 'до 25', 'безлимит'],
+          ['Заявителей (пользователей)', 'до 25', 'безлимит', 'безлимит', 'безлимит'],
+          ['Заявок в месяц', 'до 200', 'безлимит', 'безлимит', 'безлимит'],
+          ['Лимит CMDB (конфиг. единиц)', 'до 200', 'до 3000', 'до 20 000', 'безлимит'],
+          ['Тип развёртывания', 'Только On-premise', 'Облако (SaaS)', 'Облако / On-premise', 'Облако / On-premise'],
+          ['Интеграция с AD / LDAP', false, false, true, true],
+          ['Разработка (Dev-задачи, Kanban, спринты)', false, false, true, true],
+          ['Удалённое управление (Web SSH / RDP)', false, false, false, true],
+          ['Данные на стороне клиента', true, false, true, true],
+          ['Пробный период платных функций', false, '14 дней', '14 дней', 'Пилот / PoC'],
+          ['Внедрение «под ключ»', false, 'до 5 дней', 'до 10 дней', 'до 20 дней'],
+          ['Гарантия SLA (время решения)', false, '8 ч', '4 ч', '2 ч'],
+          ['Техническая поддержка', 'База знаний', 'Email, 24 ч', '9/2, 4 ч', 'Премиум 30 мин + перс. менеджер']
+        ]
+      },
+      {
+        title: 'Портал самообслуживания',
+        rows: [
+          ['Каталог услуг', true, true, true, true],
+          ['Настраиваемые формы и условия', true, true, true, true],
+          ['Разделы и подразделы портала', true, true, true, true],
+          ['Новости и архив', false, true, true, true],
+          ['FAQ и база знаний (поиск)', 'Полный', 'Полный', 'Полный', 'Полный'],
+          ['Семантический поиск + словарь терминов', false, true, true, true]
+        ]
+      },
+      {
+        title: 'Обращения (Service Desk)',
+        rows: [
+          ['Создание заявок (портал, почта, API)', true, true, true, true],
+          ['Фильтрация, теги, экспорт списка', true, true, true, true],
+          ['Полноценная карточка заявки', true, true, true, true],
+          ['Мобильное приложение для обращений', false, true, true, true],
+          ['Согласования', false, true, true, true],
+          ['Связанные сущности', false, true, true, true],
+          ['Учёт времени (таймер, наряды)', false, true, true, true],
+          ['Списание материалов', false, true, true, true],
+          ['Переработки', false, true, true, true],
+          ['Оценка качества (CSAT)', false, true, true, true],
+          ['Напоминания по заявкам', false, true, true, true],
+          ['Похожие закрытые обращения', false, true, true, true]
+        ]
+      },
+      {
+        title: 'ITAM / CMDB',
+        rows: [
+          ['Карточка КЕ', true, true, true, true],
+          ['Создание и редактирование КЕ', true, true, true, true],
+          ['Владельцы и сотрудники', true, true, true, true],
+          ['Акт передачи (DOCX)', true, true, true, true],
+          ['Склад, ремонт, без владельца', false, true, true, true],
+          ['Инвентаризация через мобильное приложение', false, true, true, true],
+          ['Избранное + массовые операции', false, true, true, true],
+          ['Технические заключения (PDF)', false, true, true, true],
+          ['Network check (Ping, TCP/22)', false, true, true, true],
+          ['Удалённое управление (Web SSH / RDP)', false, false, false, true],
+          ['Зашифрованные секреты (пароли)', true, true, true, true],
+          ['Отчёты CMDB', true, true, true, true],
+          ['Управление картриджами', false, true, true, true],
+          ['Запрос картриджа через портал', false, true, true, true]
+        ]
+      },
+      {
+        title: 'Диспетчерская панель',
+        rows: [
+          ['Виджеты: очереди, исполнители, SLA', false, true, true, true],
+          ['Повторы и кандидаты в Major Incident', false, true, true, true]
+        ]
+      },
+      {
+        title: 'Отчёты',
+        rows: [
+          ['Стандартные отчёты (SLA, OLA, очереди)', false, true, true, true],
+          ['Отчёты по нагрузке', false, true, true, true],
+          ['Денежные отчёты (затраты, НДС)', false, true, true, true],
+          ['Отчёты по качеству (CSAT)', false, true, true, true],
+          ['Отчёт по токенам ИИ', false, true, true, true]
+        ]
+      },
+      {
+        title: 'Управление разработкой (с тарифа «Профессионал»)',
+        rows: [
+          ['DEV-задачи (типы, статусы)', false, false, true, true],
+          ['Story Points, часы, версии', false, false, true, true],
+          ['Бэклог (эпики, drag-and-drop)', false, false, true, true],
+          ['Канбан-доска', false, false, true, true],
+          ['Спринты (планирование, закрытие)', false, false, true, true],
+          ['Балансировка Story Points', false, false, false, true],
+          ['Отчёты разработки', false, false, true, true]
+        ]
+      },
+      {
+        title: 'ITIL-процессы',
+        rows: [
+          ['Проблемы (объединение инцидентов)', false, true, true, true],
+          ['Изменения (Change request)', false, true, true, true],
+          ['Major Incident (массовые инциденты)', false, true, true, true]
+        ]
+      },
+      {
+        title: 'Настройки и интеграции',
+        rows: [
+          ['Интеграция с AD / LDAP (Inventa)', false, false, true, true],
+          ['Роли, группы, клиенты', 'Полные', 'Полные', 'Полные', 'Полные'],
+          ['Карта пользователей (план офиса)', false, true, true, true],
+          ['Категории, маршрутизация', true, true, true, true],
+          ['Жизненные циклы (статусы, переходы)', false, true, true, true],
+          ['Конструктор процессов (workflow)', false, true, true, true],
+          ['Схемы согласования', false, true, true, true],
+          ['SLA (время реакции/решения)', false, true, true, true],
+          ['Почтовый центр (IMAP/SMTP)', 'Полный', 'Полный', 'Полный', 'Полный'],
+          ['Webhooks (Telegram, Slack)', false, true, true, true],
+          ['REST API v2', 'Чтение', 'Полный', 'Полный', 'Полный'],
+          ['Кастомизация (логотип, тема)', true, true, true, true],
+          ['Scheduler / Cron', true, true, true, true],
+          ['Импорт и миграция (CSV/XLSX)', false, true, true, true],
+          ['Yandex AI (провайдер)', false, true, true, true],
+          ['Yandex Marketplace (лицензирование)', true, true, true, true]
+        ]
+      },
+      {
+        title: 'Искусственный интеллект (ИИ)',
+        rows: [
+          ['Автообработка входящего обращения', false, true, true, true],
+          ['Автозаполнение формы обращения', false, true, true, true],
+          ['Поиск решения в БЗ', false, true, true, true],
+          ['Рекомендации инженеру', false, true, true, true],
+          ['Проверка качества закрытия', false, true, true, true],
+          ['Похожие закрытые обращения (ранжирование)', false, true, true, true],
+          ['Кандидаты в проблему / Major Incident', false, true, true, true],
+          ['Что требует внимания сейчас', false, true, true, true],
+          ['Статья БЗ из решения', false, true, true, true],
+          ['Автоуточнение неполных заявок', false, true, true, true],
+          ['CMDB: оценка карточки КЕ', false, true, true, true],
+          ['Картриджи: проверка совместимости', false, true, true, true],
+          ['Разработка: user story / acceptance criteria', false, false, true, true],
+          ['Объяснение процесса (конструктор)', false, false, true, true],
+          ['CMDB: рекомендации по парку техники', false, false, true, true],
+          ['Автообогащение словаря терминов', false, false, true, true],
+          ['Анализ аномалий затрат', false, false, false, true],
+          ['Аудит и безопасность (анализ активности)', false, false, false, true],
+          ['Управленческий отчёт (ИИ-аналитика)', false, false, false, true]
+        ]
+      }
+    ]
+
+  +modal({
+    id: 'tariffs-compare',
+    attributes: attributes,
+  })
+    .tariffs-compare
+      .inner
+        .tariffs-compare__head
+          +ui-h2('Сравнение планов')
+          +ui-h5('Подробное сравнение наших тарифных планов', '--medium', 'div').ui-grey
+          +badge('Акция «Тест-драйв»: любой тариф на&nbsp;6&nbsp;месяцев бесплатно', '--color-orange, --size-large')
+        .tariffs-compare__table
+          .tariffs-compare__content
+            if highlightedPlanIndex !== -1
+              .tariffs-compare__column-highlight(style=`--comparison-highlight-index: ${highlightedPlanIndex}`)
+            .tariffs-compare__plan-heads
+              .tariffs-compare__plan-head-spacer
+              each plan in comparisonPlans
+                .tariffs-compare__plan-head
+                  span=plan.title
+                  if plan.badge
+                    +badge(plan.badge, '--color-blue, --size-xs', 'span').tariffs-compare__plan-badge
+            .tariffs-compare__groups
+              each group in comparisonGroups
+                .tariffs-compare__group
+                  if group.title
+                    .tariffs-compare__group-title=group.title
+                  each row, rowIndex in group.rows
+                    .tariffs-compare__row(class=[rowIndex === 0 ? 'tariffs-compare__row--first' : '', rowIndex === group.rows.length - 1 ? 'tariffs-compare__row--last' : ''])
+                      .tariffs-compare__label=row[0]
+                      .tariffs-compare__values
+                        each cell in row.slice(1)
+                          -
+                            const hasValueOptions = cell !== null && typeof cell === 'object'
+                            const value = hasValueOptions ? cell.value : cell
+                          .tariffs-compare__value(class=[hasValueOptions && cell.muted ? 'tariffs-compare__value--subtitle' : ''])
+                            if value === true
+                              span.tariffs-compare__check
+                            else if value === false
+                              span.tariffs-compare__dash &mdash;
+                            else
+                              =value
+          .tariffs-compare__actions
+            .tariffs-compare__actions-spacer
+            each plan in comparisonPlans
+              .tariffs-compare__action
+                +ui-button('Выбрать план', '#contact', `--px-xxs, --${plan.highlighted ? 'secondary-dark' : 'secondary-light'}`).js-modal-close(data-modal-close='immediate')
+      block

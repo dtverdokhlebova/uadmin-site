@@ -17,7 +17,9 @@ mixin ui-input(field, mods)
       name=field.name
       type=field.type || 'text'
       inputmode=field.inputmode
+      autocomplete=field.autocomplete
       maxlength=field.maxlength
+      data-phone-mask=field.phoneMask
       required=field.required)
     label.ui-input__label(for=field.id)=field.label
     if field.required

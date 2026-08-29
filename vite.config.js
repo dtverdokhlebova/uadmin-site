@@ -1,15 +1,31 @@
 import path, { resolve } from 'node:path'
 import url from 'node:url'
+import fs from 'node:fs'
 import { defineConfig } from 'vite'
 import viteMultipage from 'vite-plugin-multipage'
 import vitePug from 'vite-plugin-pug-transformer'
 import viteEslint from 'vite-plugin-eslint'
 import viteStylelint from 'vite-plugin-stylelint'
 import viteSassGlob from 'vite-plugin-sass-glob-import'
-import viteImagemin from 'vite-plugin-imagemin'
 
-const root = resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'src')
-const outDir = resolve(path.dirname(url.fileURLToPath(import.meta.url)), 'dist')
+const projectRoot = path.dirname(url.fileURLToPath(import.meta.url))
+const root = resolve(projectRoot, 'src')
+const outDir = resolve(projectRoot, 'dist')
+const sourceJavaScriptPath = resolve(root, 'js/index.js')
+
+const preserveSourceJavaScript = () => ({
+  name: 'preserve-source-javascript',
+  enforce: 'post',
+  generateBundle(_options, bundle) {
+    const scriptChunk = bundle['scripts/scripts.js']
+
+    if (!scriptChunk || scriptChunk.type !== 'chunk') {
+      throw new Error('JavaScript entry chunk was not found')
+    }
+
+    scriptChunk.code = fs.readFileSync(sourceJavaScriptPath, 'utf8')
+  }
+})
 
 export default defineConfig({
   root,
@@ -65,29 +81,6 @@ export default defineConfig({
     }),
     viteStylelint(),
     viteSassGlob(),
-    viteImagemin({
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false
-      },
-      mozjpeg: {
-        quality: 75
-      },
-      pngquant: {
-        quality: [0.7, 0.7],
-        speed: 4
-      },
-      svgo: {
-        plugins: [
-          {
-            name: 'removeViewBox'
-          },
-          {
-            name: 'removeEmptyAttrs',
-            active: false
-          }
-        ]
-      }
-    })
+    preserveSourceJavaScript()
   ]
 })

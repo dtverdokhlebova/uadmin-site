@@ -1,0 +1,270 @@
+.tariffs-compare {
+  @include adaptive-values((
+    --comparison-label-width: (340px, 230px),
+    --comparison-label-mr: (20px, 20px),
+    --comparison-plan-width: (265px, 176px),
+    --comparison-group-pd-x: (20px, 20px),
+    --comparison-group-pd-y: (10px, 8px),
+    --comparison-hover-inset: (10px, 8px),
+    padding-top: (110px, 60px, 40px)
+  ));
+  @include media-tablet {
+    padding-right: var(--inner-pd-mob);
+    padding-left: var(--inner-pd-mob);
+  }
+  &__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    @include adaptive-values((
+      margin-bottom: (50px, 40px,)
+    ));
+    @include media-tablet {
+      display: block;
+      text-align: left;
+    }
+    .ui-h2 {
+      &:not(:last-child) {
+        @include adaptive-values((
+          margin-bottom: (20px, 16px,)
+        ));
+      }
+    }
+    .ui-h5 {
+      &:not(:last-child) {
+        @include adaptive-values((
+          margin-bottom: (24px, 15px)
+        ));
+      }
+    }
+    .badge {
+      @include media-tablet {
+        max-width: 79%;
+      }
+    }
+  }
+  &__table {
+    width: max-content;
+  }
+  &__content {
+    position: relative;
+    @include adaptive-values((
+      padding-bottom: (20px, 25px)
+    ));
+  }
+  &__plan-heads,
+  &__actions {
+    display: grid;
+    grid-template-columns:
+      calc(var(--comparison-label-width) + var(--comparison-label-mr))
+      repeat(4, var(--comparison-plan-width));
+  }
+  &__plan-heads {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    overflow: hidden;
+  }
+  &__plan-head {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    line-height: 1.2;
+    background: transparent;
+    transition: $transitionDuration ease;
+    @include adaptive-values((
+      gap: (8px, 8px),
+      padding: ((18px, 20px, 18px, 20px) (15px, 10px, 15px, 20px)),
+      font-size: (20px, 15px),
+    ));
+    &:nth-child(2) {
+      @include adaptive-values((
+        border-bottom-left-radius: (20px, 25px)
+      ));
+    }
+    &:last-child {
+      @include adaptive-values((
+        border-bottom-right-radius: (20px, 25px)
+      ));
+    }
+  }
+  &--scrolled &__plan-head {
+    background: rgba(217, 217, 217, 0.5);
+    backdrop-filter: blur(10px);
+  }
+  &__plan-badge {
+    white-space: nowrap;
+  }
+  &__groups {
+    position: relative;
+    z-index: 1;
+  }
+  &__group {
+    &:not(:first-child) {
+      @include adaptive-values((
+        margin-top: (12px, 4px)
+      ));
+    }
+  }
+  &__group-title {
+    width: var(--comparison-label-width);
+    padding-right: var(--comparison-label-mr);
+    font-weight: 600;
+    line-height: 1.2;
+    @include adaptive-values((
+      font-size: (20px, 15px),
+    ));
+  }
+  &__row {
+    display: grid;
+    grid-template-columns:
+      calc(var(--comparison-label-width) + var(--comparison-label-mr))
+      calc(var(--comparison-plan-width) * 4);
+  }
+  &__values {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: repeat(4, var(--comparison-plan-width));
+    background: #fff;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: 1px;
+      right: var(--comparison-hover-inset);
+      bottom: 1px;
+      /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+      left: var(--comparison-hover-inset);
+      border-radius: 3px;
+      background: $bgLight;
+      opacity: 0;
+      pointer-events: none;
+      transition: $transitionDuration ease;
+    }
+  }
+  &__label,
+  &__value {
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid #dadce1;
+    transition: color $transitionDuration ease, background-color $transitionDuration ease;
+    @include adaptive-values((
+      min-height: (32px, 28px),
+      padding: ((4px 20px), (2px 20px)),
+      font-size: (16px, 15px),
+    ));
+  }
+  &__label {
+    width: var(--comparison-label-width);
+    padding-left: 0;
+    color: $grey;
+  }
+  &__value {
+    display: flex;
+    align-items: center;
+    &:first-child {
+      margin-left: var(--comparison-group-pd-x);
+      padding-left: 0;
+    }
+    &:last-child {
+      margin-right: var(--comparison-group-pd-x);
+      padding-right: 0;
+    }
+  }
+  &__value--subtitle {
+    align-items: flex-start;
+    color: $grey;
+  }
+  @media (hover: hover) {
+    &__row:hover &__values::before {
+      opacity: 1;
+    }
+    &__row:hover &__label {
+      color: $black;
+    }
+  }
+  &__row--first &__label,
+  &__row--first &__value {
+    padding-top: calc(5px + var(--comparison-group-pd-y));
+  }
+  &__row--first &__values::before {
+    top: var(--comparison-group-pd-y);
+  }
+
+  &__row--first &__values {
+    @include adaptive-values((
+      border-top-right-radius: (20px, 15px),
+      border-top-left-radius: (20px, 15px)
+    ));
+  }
+  &__row--last &__values {
+    @include adaptive-values((
+      border-bottom-right-radius: (20px, 15px),
+      border-bottom-left-radius: (20px, 15px)
+    ));
+  }
+  &__row--last &__label,
+  &__row--last &__value {
+    padding-bottom: calc(5px + var(--comparison-group-pd-y));
+    border-bottom-color: transparent;
+  }
+  &__check {
+    display: inline-flex;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Crect width='16' height='16' fill='%232a9efe' rx='3'/%3E%3Cpath fill='%23fff' d='M6.261 11.826 2.783 8.57l1.218-1.14 2.26 2.117 5.74-5.373 1.217 1.14z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    @include adaptive-values((
+      width: (16px, 16px),
+      height: (16px, 16px)
+    ));
+  }
+  &__column-highlight {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: calc(
+      var(--comparison-label-width) + var(--comparison-label-mr) + (var(--comparison-plan-width) * var(--comparison-highlight-index))
+    );
+    width: var(--comparison-plan-width);
+    border: 1px solid #dadce1;
+    pointer-events: none;
+    @include adaptive-values((
+      border-radius: (16px, 15px)
+    ));
+  }
+  &__actions {
+    position: sticky;
+    z-index: 9;
+    bottom: 0;
+    margin-top: 30px;
+    @include adaptive-values((
+      margin-top: (20px, 20px)
+    ));
+  }
+  &__actions-spacer {
+    background: $bgLight;
+  }
+  &__action {
+    background: rgba(217, 217, 217, 0.5);
+    backdrop-filter: blur(10px);
+    @include adaptive-values((
+      padding: ((10px 20px 10px 20px), (10px 20px 10px 20px)),
+    ));
+    &:nth-child(2) {
+      @include adaptive-values((
+        border-top-left-radius: (15px, 15px)
+      ));
+    }
+    &:last-child {
+      @include adaptive-values((
+        border-top-right-radius: (15px, 15px)
+      ));
+    }
+    .ui-button {
+      width: 100%;
+    }
+  }
+}

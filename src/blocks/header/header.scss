@@ -70,7 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include adaptive-value(gap, 35px, 14px, 12px);
+    @include adaptive-value(gap, 30px, 14px, 12px);
     @include media-laptop {
       align-items: flex-start;
       flex-direction: column;

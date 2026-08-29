@@ -111,7 +111,7 @@ mixin tariffs(mods)
                     =name
               .tariffs-plan__actions
                 +ui-button('Выбрать план', '#contact', `--px-xxs, --py-l, --${plan.button}`)
-                +ui-button('Подробности тарифа', null, `--px-xxs, --py-l, --${plan.detailsButton}`)
+                +ui-button('Подробности тарифа', null, `--px-xxs, --py-l, --${plan.detailsButton}`).js-modal-open(data-modal-open='tariffs-compare')
       .tariffs-benefits
         each benefit in tariffBenefits
           .tariffs-benefits__card
@@ -120,4 +120,5 @@ mixin tariffs(mods)
             .tariffs-benefits__content
               +ui-h6(benefit[0], '', 'div')
               +ui-p1(benefit[1]).ui-grey
+      +tariffs-compare()
       block

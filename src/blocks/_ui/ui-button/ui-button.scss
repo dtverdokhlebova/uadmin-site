@@ -25,8 +25,8 @@
   }
   &--py-l {
     @include adaptive-values((
-      padding-top: (13px),
-      padding-bottom: (13px)
+      padding-top: (13px, 12px),
+      padding-bottom: (13px, 12px)
     ));
   }
   &--px-xxs {
@@ -125,6 +125,19 @@
       color: rgba(7, 18, 53, 0.7);
       border-color: rgba(7, 18, 53, 0.5);
       background: rgba(7, 18, 53, 0.1);
+    }
+  }
+  &--icon {
+    @include adaptive-values((
+      width: (50px, 45px),
+      height: (50px, 45px),
+      padding: ((10px), (10px))
+    ));
+    .svg {
+      @include adaptive-values((
+        width: (17px, 17px),
+        height: (17px, 17px),
+      ));
     }
   }
 }

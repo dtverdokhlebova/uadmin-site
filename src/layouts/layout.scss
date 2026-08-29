@@ -3,6 +3,7 @@
 *::after {
   box-sizing: border-box;
   appearance: none;
+  letter-spacing: -0.03em;
 }
 .swiper {
   *,
@@ -42,7 +43,6 @@ a {
   font-weight: 500;
   line-height: 1.4;
   font-family: 'Inter', 'Arial', sans-serif;
-  letter-spacing: -0.03em;
   background-color: #fff;
   color: $black;
   -webkit-tap-highlight-color: transparent;
