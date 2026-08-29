@@ -32,7 +32,8 @@
     ));
     transition:
       background-color $transitionDuration ease,
-      box-shadow $transitionDuration ease;
+      box-shadow $transitionDuration ease,
+      opacity $transitionDuration ease;
   }
   &__logo {
     position: relative;
@@ -94,8 +95,7 @@
           font-weight: 600;
           color: #fff;
         }
-        &:hover,
-        &:focus-visible {
+        @include media-hover {
           color: #fff;
         }
       }
@@ -144,8 +144,8 @@
   &--floating {
     position: fixed;
     top: var(--header-floating-top);
-    animation: header-fade-in 0.3s ease both;
-    transition: opacity $transitionDuration ease, transform $transitionDuration ease;
+    animation: header-slide-in 0.3s ease both;
+    transition: transform $transitionDuration ease;
     @include media-laptop {
       &:not(.header--menu-open) {
         .header__toggle {
@@ -160,25 +160,29 @@
     }
     .header__bar {
       background-color: rgba(217, 217, 217, 0.5);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      animation: header-fade-in 0.3s ease both;
     }
     .header__logo {
       filter: brightness(0);
     }
     .header__menu a {
       color: rgba(41, 47, 63, 0.5);
-      &:hover,
-      &:focus-visible {
+
+      @include media-hover {
         color: #292f3f;
       }
     }
   }
   &--floating.header--leaving {
-    opacity: 0;
     transform: translateY(-12px);
     animation: none;
     pointer-events: none;
+    .header__bar {
+      opacity: 0;
+      animation: none;
+    }
   }
   &--floating.header--menu-open {
     @include media-laptop {
@@ -206,8 +210,8 @@
         transform: scale(1);
         a {
           color: #fff;
-          &:hover,
-          &:focus-visible {
+
+          @include media-hover {
             color: #fff;
           }
         }
@@ -236,10 +240,16 @@
 @keyframes header-fade-in {
   from {
     opacity: 0;
-    margin-top: -12px;
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes header-slide-in {
+  from {
+    margin-top: -12px;
+  }
+  to {
     margin-top: 0;
   }
 }

@@ -242,7 +242,7 @@
   }
   &__icon {
     flex-shrink: 0;
-    @include adaptive-value(width, 40px, 28px);
+    @include adaptive-value(width, 45px, 28px);
     img {
       width: 100%;
     }

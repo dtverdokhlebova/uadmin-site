@@ -166,26 +166,15 @@
   align-items: flex-end;
   flex-wrap: wrap;
   @include adaptive-values((
-    column-gap: (80px, 50px),
-    row-gap: (30px, 20px),
+    column-gap: (79px, 54px),
+    row-gap: (30px, 12px),
     margin-top: (20px, 20px)
   ));
   &__item {
-    flex: auto;
-    @include adaptive-values((
-      max-width: (134px, 95px),
-    ));
-    @include media-desktop {
-      flex: unset;
-    }
     img {
-      width: 100%;
       @include adaptive-values((
-        max-height: (44px, 20px)
+        max-height: (60px, 43px)
       ));
-      @include media-desktop {
-        width: auto;
-      }
     }
   }
 }

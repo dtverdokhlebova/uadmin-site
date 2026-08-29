@@ -17,10 +17,8 @@
   box-shadow: $shadow;
   transition: $transitionDuration ease;
 
-  @media (hover: hover) {
-    &:hover {
-      box-shadow: $hover-shadow;
-      transform: translateY(-$lift);
-    }
+  @include media-hover {
+    box-shadow: $hover-shadow;
+    transform: translateY(-$lift);
   }
 }

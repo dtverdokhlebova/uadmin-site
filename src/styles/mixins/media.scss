@@ -27,6 +27,14 @@
   }
 }
 
+@mixin media-hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
 @function design-vw($value, $design-width: $mediaWidthDesktop) {
   @if meta.type-of($value) == 'list' {
     $result: ();

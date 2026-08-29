@@ -442,114 +442,14 @@ const initUiInputs = () => {
   }
 }
 
-const getPhoneDigits = (value) => {
-  let digits = value.replace(/\D/g, '')
-
-  if (!digits) {
-    return ''
-  }
-
-  if (digits.startsWith('8')) {
-    digits = `7${digits.slice(1)}`
-  } else if (!digits.startsWith('7')) {
-    digits = `7${digits}`
-  }
-
-  return digits.slice(0, 11)
-}
-
-const formatRussianPhone = (value) => {
-  const phoneDigits = getPhoneDigits(value)
-
-  if (!phoneDigits) {
-    return ''
-  }
-
-  const subscriberNumber = phoneDigits.slice(1)
-  let formattedValue = '+7'
-
-  if (subscriberNumber.length > 0) {
-    formattedValue += ` (${subscriberNumber.slice(0, 3)}`
-  }
-
-  if (subscriberNumber.length >= 3) {
-    formattedValue += ')'
-  }
-
-  if (subscriberNumber.length > 3) {
-    formattedValue += ` ${subscriberNumber.slice(3, 6)}`
-  }
-
-  if (subscriberNumber.length > 6) {
-    formattedValue += `-${subscriberNumber.slice(6, 8)}`
-  }
-
-  if (subscriberNumber.length > 8) {
-    formattedValue += `-${subscriberNumber.slice(8, 10)}`
-  }
-
-  return formattedValue
-}
-
-const getPhoneCaretPosition = (formattedValue, digitsBeforeCaret) => {
-  if (digitsBeforeCaret <= 0) {
-    return 0
-  }
-
-  if (digitsBeforeCaret >= formattedValue.replace(/\D/g, '').length) {
-    return formattedValue.length
-  }
-
-  let digitsPassed = 0
-  let characterIndex = 0
-
-  for (const character of formattedValue) {
-    if (/\d/.test(character)) {
-      digitsPassed += 1
-    }
-
-    if (digitsPassed === digitsBeforeCaret) {
-      return characterIndex + 1
-    }
-
-    characterIndex += 1
-  }
-
-  return formattedValue.length
-}
-
 const initPhoneMasks = () => {
   const phoneInputs = document.querySelectorAll('[data-phone-mask="ru"]')
 
-  for (const phoneInput of phoneInputs) {
-    const applyPhoneMask = () => {
-      const valueBeforeFormatting = phoneInput.value
-      const caretBeforeFormatting = phoneInput.selectionStart
-      const rawDigits = valueBeforeFormatting.replace(/\D/g, '')
-      let digitsBeforeCaret = valueBeforeFormatting
-        .slice(0, caretBeforeFormatting ?? valueBeforeFormatting.length)
-        .replace(/\D/g, '').length
-
-      if (rawDigits && !/^[78]/.test(rawDigits)) {
-        digitsBeforeCaret += 1
-      }
-
-      const formattedValue = formatRussianPhone(valueBeforeFormatting)
-
-      phoneInput.value = formattedValue
-
-      if (caretBeforeFormatting !== null && document.activeElement === phoneInput) {
-        const caretPosition = getPhoneCaretPosition(
-          formattedValue,
-          digitsBeforeCaret
-        )
-
-        phoneInput.setSelectionRange(caretPosition, caretPosition)
-      }
-    }
-
-    phoneInput.addEventListener('input', applyPhoneMask)
-    applyPhoneMask()
+  for (const input of phoneInputs) {
+    IMask(input, {
+      mask: '+{7} (000) 000-00-00',
+      lazy: true
+    })
   }
 }
 

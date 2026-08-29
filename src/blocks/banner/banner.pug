@@ -22,7 +22,7 @@ mixin banner(type, mods)
           .banner__head
             h1.banner__title U-Admin помогает ИТ-отделу работать
             .banner__description
-              | Заявки, оборудование, автоматическая инвентаризация, удалённая поддержка, база знаний, проекты и ИИ — в одной системе. Весь необходимый функционал — в бесплатной версии.
+              | Заявки, оборудование, автоматическая инвентаризация, удалённая поддержка, база знаний, проекты и&nbsp;ИИ&nbsp;—&nbsp;в&nbsp;одной системе. Весь необходимый функционал&nbsp;—&nbsp;в&nbsp;бесплатной версии.
           .banner__actions
             +ui-button('Скачать бесплатно', '#contact', '--py-l, --primary, banner')
             +ui-button('Обсудить проект', '#contact', '--py-l, --secondary, banner')
@@ -39,5 +39,5 @@ mixin banner(type, mods)
         .banner-partners
           each logo in partnerLogos
             .banner-partners__item
-              img(src=`../../images/logos/${logo}` alt='')
+              img(src=`../../images/banner/${logo}` alt='')
       block

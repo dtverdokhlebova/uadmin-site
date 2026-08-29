@@ -14,24 +14,16 @@
     ));
     border: 1px solid transparent;
     background-color: rgba(255, 255, 255, 0.2);
-    background-image: linear-gradient(
-      rgba(255, 255, 255, 0.25),
-      rgba(255, 255, 255, 0.25)
-    );
-    background-position: left top;
-    background-size: 0 100%;
-    background-repeat: no-repeat;
     font: inherit;
     color: #fff;
     outline: none;
     transition: $transitionDuration ease;
-    &:hover {
+    @include media-hover {
       background-color: rgba(255, 255, 255, 0.3);
     }
     &:focus {
       border-color: rgba(255, 255, 255, 1);
       background-color: rgba(255, 255, 255, 0.2);
-      background-size: 100% 100%;
       box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
     }
     &:focus ~ .ui-input__required {
@@ -49,7 +41,6 @@
       font-size: 0.81em;
     }
     &:-webkit-autofill,
-    &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
       -webkit-text-fill-color: #fff;
       -webkit-background-clip: text;
@@ -58,9 +49,10 @@
     }
     &:-webkit-autofill {
       box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
-    }
-    &:-webkit-autofill:hover {
-      box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.3);
+
+      @include media-hover {
+        box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.3);
+      }
     }
     &:-webkit-autofill:focus {
       box-shadow:

@@ -121,6 +121,16 @@
     grid-template-columns:
       calc(var(--comparison-label-width) + var(--comparison-label-mr))
       calc(var(--comparison-plan-width) * 4);
+
+    @include media-hover {
+      .tariffs-compare__values::before {
+        opacity: 1;
+      }
+
+      .tariffs-compare__label {
+        color: $black;
+      }
+    }
   }
   &__values {
     position: relative;
@@ -176,14 +186,6 @@
   &__value--subtitle {
     align-items: flex-start;
     color: $grey;
-  }
-  @media (hover: hover) {
-    &__row:hover &__values::before {
-      opacity: 1;
-    }
-    &__row:hover &__label {
-      color: $black;
-    }
   }
   &__row--first &__label,
   &__row--first &__value {

@@ -6,11 +6,12 @@
   display: flex;
   align-items: flex-start;
   cursor: pointer;
-  &:hover .ui-checkbox__box {
-    background: rgba(255, 255, 255, 0.4);
-  }
-  &:hover .ui-checkbox__input:checked + .ui-checkbox__box {
-    background: rgba(255, 255, 255, 0.4);
+
+  @include media-hover {
+    .ui-checkbox__box,
+    .ui-checkbox__input:checked + .ui-checkbox__box {
+      background: rgba(255, 255, 255, 0.4);
+    }
   }
   &__input {
     position: absolute;
@@ -57,8 +58,8 @@
   &--white {
     a {
       color: rgba(255, 255, 255, 0.5);
-      &:hover,
-      &:focus-visible {
+
+      @include media-hover {
         color: #ff5323;
       }
     }

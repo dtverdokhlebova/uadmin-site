@@ -30,7 +30,8 @@
   &__link {
     color: inherit;
     transition: color $transitionDuration ease;
-    &:hover {
+
+    @include media-hover {
       color: rgba(255, 255, 255, 1);
     }
   }

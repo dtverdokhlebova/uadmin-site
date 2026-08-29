@@ -41,10 +41,7 @@
     }
     &__img {
       flex-shrink: 0;
-      width: 20%;
-      @include media-tablet {
-        max-width: 80px;
-      }
+      width: 20.5%;
       img {
         width: 100%;
       }

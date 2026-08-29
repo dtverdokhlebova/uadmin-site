@@ -46,6 +46,16 @@
         .capabilities__box {
           color: rgba(7, 18, 53, 0.25);
           background-color: rgba(255, 255, 255, 0.3);
+          .capabilities__icon {
+            opacity: 0.2;
+          }
+          @include media-hover {
+            color: rgba(7, 18, 53, 0.45);
+            background-color: rgba(255, 255, 255, 1);
+            .capabilities__icon {
+              opacity: 0.45;
+            }
+          }
         }
       }
     }
@@ -75,7 +85,11 @@
       &__grid--compact,
       &__column {
         grid-row: 1 / span 4;
-        grid-template-rows: subgrid;
+        grid-template-rows: repeat(4, 1fr);
+      }
+      &__box {
+        width: 100%;
+        min-width: 0;
       }
       &__box--big {
         grid-row: span 2;
@@ -84,7 +98,6 @@
   }
   &__box {
     display: grid;
-    aspect-ratio: 1.1;
     @include adaptive-values((
       padding: (14px, 1px, 10px),
       border-radius: (20px, 15px)
@@ -92,17 +105,18 @@
     text-align: center;
     word-break: break-word;
     @include card-hover;
-    @include media-tablet {
-      aspect-ratio: auto;
-    }
     img {
       width: 100%;
     }
     &--big {
       grid-template-rows: 52% 1fr;
       @include adaptive-value(gap, 45px, 20px);
+      aspect-ratio: 1.1;
       color: $black;
       background-color: #fff;
+      @include media-tablet {
+        aspect-ratio: auto;
+      }
     }
     &--small {
       grid-template-rows: 48% 1fr;
@@ -115,6 +129,13 @@
         justify-content: center;
         align-items: center;
       }
+      @include media-hover {
+        color: rgba(7, 18, 53, 0.45);
+        background-color: rgba(255, 255, 255, 1);
+        .capabilities__icon {
+          opacity: 0.45;
+        }
+      }
       .ui-p2 {
         align-self: end;
         @include media-laptop {
@@ -124,12 +145,13 @@
     }
   }
   &__img {
-    @include adaptive-value(width, 100px, 60px);
+    @include adaptive-value(width, 102px, 60px);
     margin: auto auto 0;
   }
   &__icon {
-    @include adaptive-value(width, 22px, 20px);
+    @include adaptive-value(width, 21px, 22px);
     margin: auto auto 0;
+    opacity: 0.35;
     @include media-laptop {
       margin: unset;
     }

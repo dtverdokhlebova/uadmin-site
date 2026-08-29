@@ -73,7 +73,7 @@
       }
       .solution-card {
         &__img {
-          @include adaptive-value(height, 64px, 43px);
+          @include adaptive-value(height, 68px, 46px);
           margin-top: auto;
           img {
             height: 100%;

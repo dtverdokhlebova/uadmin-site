@@ -59,9 +59,9 @@
     }
   ]
   const tariffBenefits =[
-    ['Безопасность', 'Данные в Yandex Cloud, 152-ФЗ, шифрование, аудит', 'benefits_1.png'],
-    ['Никаких рисков', 'Начните бесплатно, платите только когда вырастете', 'benefits_2.png'],
-    ['Всё в одном', 'Service Desk, CMDB, разработка, ИИ — в одной платформе', 'benefits_3.png']
+    ['Безопасность', 'Данные в Yandex Cloud, 152-ФЗ, шифрование, аудит', 'tariffs_benefits_1.png'],
+    ['Никаких рисков', 'Начните бесплатно, платите только когда вырастете', 'tariffs_benefits_2.png'],
+    ['Всё в одном', 'Service Desk, CMDB, разработка, ИИ — в одной платформе', 'tariffs_benefits_3.png']
   ]
 
 mixin tariffs(mods)
@@ -116,7 +116,7 @@ mixin tariffs(mods)
         each benefit in tariffBenefits
           .tariffs-benefits__card
             .tariffs-benefits__icon
-              img(src=`../../images/benefits/${benefit[2]}` alt='')
+              img(src=`../../images/tariffs-benefits/${benefit[2]}` alt='')
             .tariffs-benefits__content
               +ui-h6(benefit[0], '', 'div')
               +ui-p1(benefit[1]).ui-grey
