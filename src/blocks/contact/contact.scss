@@ -1,7 +1,7 @@
 .contact {
   &.section {
     @include media-tablet {
-      border-radius: 15px 15px 0 0;
+      border-radius: design-vw(15px, $mediaWidthMobile) design-vw(15px, $mediaWidthMobile) 0 0;
     }
   }
   .section-head {
@@ -9,8 +9,8 @@
     @include adaptive-value(margin-bottom, 35px, 16px);
     @include media-tablet {
       grid-row: 1;
-      margin-right: -10px;
-      margin-left: -10px;
+      margin-right: design-vw(-10px, $mediaWidthMobile);
+      margin-left: design-vw(-10px, $mediaWidthMobile);
     }
   }
   .section-head__ui-h5 {
@@ -23,7 +23,7 @@
     align-items: start;
     @include media-tablet {
       grid-template-columns: 1fr;
-      padding: 0 10px;
+      padding: 0 design-vw(10px, $mediaWidthMobile);
     }
   }
   &__content {
@@ -53,7 +53,7 @@
   @include media-tablet {
     grid-row: 2;
     margin-right: var(--inner-pd-mob);
-    margin-bottom: 25px;
+    margin-bottom: design-vw(25px, $mediaWidthMobile);
     margin-left: var(--inner-pd-mob);
   }
   &__photo {

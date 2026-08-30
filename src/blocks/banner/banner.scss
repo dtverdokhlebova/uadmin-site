@@ -173,7 +173,7 @@
   &__item {
     img {
       @include adaptive-values((
-        max-height: (60px, 43px)
+        height: (60px, 43px)
       ));
     }
   }

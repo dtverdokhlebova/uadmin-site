@@ -11,6 +11,7 @@
   @include media-tablet {
     grid-template-columns: 1fr;
     gap: 12px;
+    padding: 0 var(--inner-pd-mob);
     text-align: center;
   }
   &__meta {

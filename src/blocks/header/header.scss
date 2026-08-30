@@ -17,7 +17,7 @@
     }
     @include media-laptop {
       max-width: 1028px;
-      padding: 0 12px;
+      padding: 0 design-vw(12px, $mediaWidthMobile);
     }
   }
   &__bar {
@@ -28,7 +28,8 @@
     gap: 20px;
     @include adaptive-values((
       padding: ((10px 20px 10px 20px), (12px 12px 12px 12px)),
-      border-radius: (15px, 15px)
+      border-radius: (15px, 15px),
+      gap: (20px, 30px)
     ));
     transition:
       background-color $transitionDuration ease,
@@ -54,13 +55,14 @@
       z-index: 1;
       inset: 0;
       display: block;
-      padding: 85px 20px 60px;
-      overflow-y: auto;
       background: linear-gradient(180deg, #00021D 0%, #003380 99.99);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
       transition: opacity $transitionDuration ease, visibility 0s linear $transitionDuration;
+      @include adaptive-values((
+        padding: ((85px 20px 60px 20px), (85px 20px 60px 20px)),
+      ));
     }
     @include media-tablet {
       padding-right: var(--inner-pd-mob);
@@ -76,6 +78,8 @@
       align-items: flex-start;
       flex-direction: column;
       max-width: 880px;
+      max-height: 100%;
+      overflow-y: auto;
       margin: 0 auto;
       opacity: 0;
       transform: scale(0.8);
@@ -110,10 +114,7 @@
     position: relative;
     z-index: 2;
     display: none;
-    width: 32px;
-    height: 32px;
     flex-shrink: 0;
-    padding: 5px;
     border: 0;
     background: transparent;
     color: #fff;
@@ -121,30 +122,43 @@
     @include media-laptop {
       display: block;
     }
+    @include adaptive-values((
+      width: (32px, 32px),
+      height: (32px, 32px),
+      padding: (5px, 5px)
+    ));
     span {
       position: absolute;
-      left: 6px;
-      width: 20px;
-      height: 3px;
-      border-radius: 2px;
       background-color: currentColor;
       transition: transform $transitionDuration ease, opacity $transitionDuration ease;
+      @include adaptive-values((
+        left: (6px, 6px),
+        width: (20px, 20px),
+        height: (3px, 3px),
+        border-radius: (2px, 2px),
+      ));
       &:nth-child(1) {
-        top: 9px;
+        @include adaptive-values((
+          top: (9px, 9px),
+        ));
       }
       &:nth-child(2) {
-        top: 15px;
+        @include adaptive-values((
+          top: (15px, 15px),
+        ));
       }
       &:nth-child(3) {
-        top: 21px;
-        width: 14px;
+        @include adaptive-values((
+          top: (21px, 21px),
+          width: (14px, 14px),
+        ));
       }
     }
   }
   &--floating {
     position: fixed;
     top: var(--header-floating-top);
-    animation: header-slide-in 0.3s ease both;
+    animation: slide-in 0.3s ease both;
     transition: transform $transitionDuration ease;
     @include media-laptop {
       &:not(.header--menu-open) {
@@ -157,12 +171,15 @@
       @include media-laptop {
         max-width: 388px;
       }
+      @include media-tablet {
+        max-width: design-vw(388px, $mediaWidthMobile);
+      }
     }
     .header__bar {
       background-color: rgba(217, 217, 217, 0.5);
       -webkit-backdrop-filter: blur(20px);
       backdrop-filter: blur(20px);
-      animation: header-fade-in 0.3s ease both;
+      animation: fade-in 0.3s ease both;
     }
     .header__logo {
       filter: brightness(0);
@@ -210,7 +227,6 @@
         transform: scale(1);
         a {
           color: #fff;
-
           @include media-hover {
             color: #fff;
           }
@@ -222,34 +238,22 @@
       .header__toggle {
         color: #fff;
         span:nth-child(1) {
-          top: 15px;
           transform: rotate(45deg);
+          @include adaptive-values((
+            top: (15px, 15px),
+          ));
         }
         span:nth-child(2) {
           opacity: 0;
         }
         span:nth-child(3) {
-          top: 15px;
-          width: 20px;
           transform: rotate(-45deg);
+          @include adaptive-values((
+            top: (15px, 15px),
+            width: (20px, 20px),
+          ));
         }
       }
     }
-  }
-}
-@keyframes header-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes header-slide-in {
-  from {
-    margin-top: -12px;
-  }
-  to {
-    margin-top: 0;
   }
 }

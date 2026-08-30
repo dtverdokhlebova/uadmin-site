@@ -1,8 +1,3 @@
-:root {
-  --inner-pd: 15px;
-  --inner-pd-mob: 25px;
-}
-
 $white60: rgba(255, 255, 255, 0.6);
 $black: #292f3f;
 $grey: rgba(7, 18, 53, 0.45);
@@ -17,3 +12,8 @@ $mediaWidthDesktop: 1920px;
 $mediaWidthLaptop: 1619px;
 $mediaWidthTablet: 1029px;
 $mediaWidthMobile: 414px;
+
+:root {
+  --inner-pd: 15px;
+  --inner-pd-mob: #{calc((25px / $mediaWidthMobile) * 100vw)};
+}

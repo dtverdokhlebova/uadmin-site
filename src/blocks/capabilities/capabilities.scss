@@ -4,9 +4,9 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr) minmax(0, 1fr);
     @include adaptive-value(gap, 30px, 15px, 20px);
     @include media-tablet {
-      grid-template-columns: 340px;
+      grid-template-columns: design-vw(340px, $mediaWidthMobile);
       grid-template-rows: repeat(3, 1fr);
-      grid-auto-columns: 130px;
+      grid-auto-columns: design-vw(130px, $mediaWidthMobile);
       grid-auto-flow: column;
       align-items: stretch;
       padding-bottom: 2px;

@@ -53,16 +53,15 @@
   &__item {
     display: flex;
     justify-content: space-between;
-    @include adaptive-value(gap, 70px, 45px);
+    @include adaptive-value(gap, 70px, 45px, 65px);
     height: auto;
     @include media-tablet {
       flex-direction: column;
       flex-shrink: 0;
       justify-content: flex-start;
-      gap: 65px;
     }
     &:not(:last-child) {
-      @include adaptive-value(margin-bottom, 100px, 45px);
+      @include adaptive-value(margin-bottom, 100px, 45px, 65px);
       @include media-tablet {
         margin-bottom: 0;
       }

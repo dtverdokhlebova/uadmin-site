@@ -85,7 +85,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 1ch;
+      @include adaptive-value(column-gap, 10px, 10px);
       line-height: 1;
     }
     &__price-old {

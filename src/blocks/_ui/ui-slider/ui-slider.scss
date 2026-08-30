@@ -2,15 +2,17 @@
   &-slider {
     &-button {
       position: relative;
-      width: 45px;
-      height: 45px;
       padding: 0;
       border: 0;
-      border-radius: 10px;
       background-color: #fff;
       color: #dadbe1;
       box-shadow: $boxShadow;
       cursor: pointer;
+      @include adaptive-values((
+        width: (45px, 45px),
+        height: (45px, 45px),
+        border-radius: (10px, 10px),
+      ));
       &::before {
         content: '';
         position: absolute;
@@ -20,6 +22,7 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16' fill='none'%3E%3Cpath fill='%23071235' fill-opacity='.45' d='M8.768 8.768a1.086 1.086 0 0 0 0-1.536L1.854.318A1.086 1.086 0 1 0 .318 1.855L6.463 8 .318 14.145a1.086 1.086 0 0 0 1.536 1.537z'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: center;
+        background-size: 22%;
       }
       &--prev {
         &::before {
@@ -27,17 +30,21 @@
         }
       }
     }
-    &-pagination {
-      --swiper-pagination-bullet-width: 7px;
-      --swiper-pagination-bullet-height: 7px;
+    &-pagination.swiper-pagination-bullets {
+      @include adaptive-values((
+        --swiper-pagination-bullet-width: (7px, 7px),
+        --swiper-pagination-bullet-height: (7px, 7px),
+      ));
+
       --swiper-pagination-color: linear-gradient(180deg, #2A9FFF 0%, #003E9C 50%, #000433 100%);
       --swiper-pagination-bullet-inactive-color: #dadbe1;
-
       line-height: 1;
       text-align: center;
       .swiper-pagination-bullet {
-        margin: 0 2px;
         opacity: 1;
+        @include adaptive-values((
+          margin: ((0 2px), (0 2px)),
+        ));
       }
     }
   }
