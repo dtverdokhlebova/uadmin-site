@@ -446,9 +446,26 @@ const initPhoneMasks = () => {
   const phoneInputs = document.querySelectorAll('[data-phone-mask="ru"]')
 
   for (const input of phoneInputs) {
-    IMask(input, {
+    const inputContainer = input.closest('.ui-input')
+    const phoneMask = IMask(input, {
       mask: '+{7} (000) 000-00-00',
       lazy: true
+    })
+
+    input.addEventListener('focus', () => {
+      if (!phoneMask.value) {
+        phoneMask.value = '+7'
+      }
+    })
+
+    input.addEventListener('blur', () => {
+      if (phoneMask.value === '+7') {
+        phoneMask.value = ''
+
+        if (inputContainer) {
+          updateUiInputFilledState(inputContainer, input)
+        }
+      }
     })
   }
 }

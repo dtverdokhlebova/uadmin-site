@@ -96,7 +96,13 @@
     justify-content: center;
     @include adaptive-value(gap, 20px, 10px);
     @include media-tablet {
-      justify-content: left;
+      justify-content: flex-start;
+    }
+  }
+  &__ui-button {
+    @include adaptive-value(min-width, 200px, 200px);
+    @include media-laptop {
+      min-width: auto;
     }
   }
   &__visual {

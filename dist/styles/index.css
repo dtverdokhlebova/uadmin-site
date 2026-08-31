@@ -3650,9 +3650,27 @@ a {
 }
 @media (max-width: 1029px) {
   .banner__actions {
-    -webkit-box-pack: left;
-        -ms-flex-pack: left;
-            justify-content: left;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+.banner__ui-button {
+  min-width: 10.4166666667vw;
+}
+@media (max-width: 1919px) {
+  .banner__ui-button {
+    min-width: 200px;
+  }
+}
+@media (max-width: 1029px) {
+  .banner__ui-button {
+    min-width: 48.309178744vw;
+  }
+}
+@media (max-width: 1619px) {
+  .banner__ui-button {
+    min-width: auto;
   }
 }
 .banner__visual {
