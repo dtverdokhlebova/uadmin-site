@@ -26,4 +26,9 @@
       border-radius: 15px 15px 0 0;
     }
   }
+  &--before-bg-gradient {
+    @include media-tablet {
+      padding-bottom: design-vw(100px, $mediaWidthMobile);
+    }
+  }
 }

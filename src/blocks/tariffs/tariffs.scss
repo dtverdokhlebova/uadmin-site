@@ -1,7 +1,7 @@
 .tariffs {
   &__badge {
     margin: 0 auto;
-    @include adaptive-value(margin-top, 24px, 15px);
+    @include adaptive-value(margin-top, 22px, 15px);
     @include media-tablet {
       max-width: design-vw(280px, $mediaWidthMobile);
       margin-right: 0;
@@ -21,7 +21,7 @@
     min-height: 100%;
     flex-direction: column;
     @include adaptive-values((
-      padding: ((40px 10px 40px 10px), (24px 10px 30px 10px)),
+      padding: ((38px 10px 40px 11px), (24px 10px 30px 10px)),
       border-radius: (20px, 15px)
     ));
     background: #fff;
@@ -79,13 +79,13 @@
       }
     }
     &__price-box {
-      @include adaptive-value(margin-bottom, 24px, 24px);
+      @include adaptive-value(margin-bottom, 24px, 20px);
     }
     &__price {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      @include adaptive-value(column-gap, 10px, 10px);
+      @include adaptive-value(column-gap, 14px, 10px);
       line-height: 1;
     }
     &__price-old {
@@ -129,7 +129,7 @@
       grid-template-columns: minmax(0, 1fr);
       align-content: start;
       @include adaptive-values((
-        gap: (25px, 25px, 16px),
+        gap: (23px, 16px),
         padding: (30px, 15px),
         border-radius: (10px, 10px)
       ));
@@ -249,6 +249,6 @@
   }
   &__content {
     display: grid;
-    @include adaptive-value(gap, 6px, 8px);
+    @include adaptive-value(gap, 3px, 8px);
   }
 }

@@ -30,19 +30,23 @@
   &__landscape,
   &__landscape-foreground {
     position: absolute;
-    left: 0;
-    width: 100%;
-    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1860px;
+    min-width: 100%;
     max-width: none;
+    height: auto;
     max-height: none;
     object-position: center bottom;
     pointer-events: none;
     user-select: none;
+    @include media-laptop {
+      width: 100%;
+      min-width: 1340px;
+    }
     @include media-tablet {
-      left: 50%;
-      width: auto;
-      height: 100%;
-      transform: translateX(-50%);
+      width: design-vw(1860px, $mediaWidthMobile);
+      min-width: auto;
     }
   }
   &__landscape {
@@ -105,6 +109,12 @@
   }
   &__desktop-media {
     grid-area: main;
+    @include adaptive-values((
+      width: (1113px, 600px),
+    ));
+    @include media-tablet {
+      width: 100%;
+    }
   }
   &__desktop-screenshot {
     position: relative;
@@ -128,7 +138,7 @@
     video,
     img {
       width: 100%;
-      @include adaptive-value(border-radius, 20px, 15px, 8px);
+      @include adaptive-value(border-radius, 20px, 8px, 8px);
       pointer-events: none;
     }
   }
@@ -140,16 +150,15 @@
     margin-left: auto;
     @include adaptive-values((
       width: (434px, 220px),
-      margin-top: (70px, 60px),
-      margin-right: (-110px, -60px)
+      margin-top: (75px, 60px),
     ));
-    aspect-ratio: 0.95;
+    aspect-ratio: 1;
     overflow: hidden;
     @include media-tablet {
       width: 42%;
-      margin-top: 10%;
+      margin-top: 9%;
       margin-right: -5%;
-      aspect-ratio: 0.7;
+      aspect-ratio: 0.85;
     }
     img {
       width: 100%;
@@ -166,7 +175,7 @@
   align-items: flex-end;
   flex-wrap: wrap;
   @include adaptive-values((
-    column-gap: (79px, 54px),
+    column-gap: (79px, 54px, 40px),
     row-gap: (30px, 12px),
     margin-top: (20px, 20px)
   ));

@@ -27,11 +27,16 @@
       }
     }
     &__head {
-      max-width: 71%;
+      max-width: 72%;
     }
     &__titles {
       &:not(:last-child) {
-        @include adaptive-value(margin-bottom, 16px, 12px);
+        @include adaptive-value(margin-bottom, 16px, 20px, 12px);
+      }
+    }
+    &__ui-h3 {
+      &:not(:last-child) {
+        @include adaptive-value(margin-bottom, 5px, 4px);
       }
     }
     &__description {
@@ -48,7 +53,7 @@
     }
     &__conditions {
       @include adaptive-values((
-        padding: ((20px 30px 20px 30px), (18px 15px 18px 15px)),
+        padding: ((20px 30px 25px 30px), (18px 15px 18px 15px)),
         border-radius: (10px, 10px)
       ));
       background-color: $bgLight;
@@ -56,6 +61,14 @@
       .ui-ul li {
         &:not(:last-child) {
           @include adaptive-value(margin-bottom, 6px, 12px);
+        }
+      }
+    }
+    &:nth-child(odd) {
+      .deployment-card__head {
+        max-width: 60%;
+        @include media-laptop {
+          max-width: 79%;
         }
       }
     }

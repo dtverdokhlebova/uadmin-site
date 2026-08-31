@@ -1,6 +1,7 @@
 .contact {
   &.section {
     @include media-tablet {
+      margin-top: design-vw(-20px, $mediaWidthMobile);
       border-radius: design-vw(15px, $mediaWidthMobile) design-vw(15px, $mediaWidthMobile) 0 0;
     }
   }
@@ -37,7 +38,7 @@
   &__icon {
     @include adaptive-values((
       width: (100px, 60px),
-      margin-bottom: (30px, 20px)
+      margin-bottom: (35px, 20px)
     ));
   }
 }
