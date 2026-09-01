@@ -41,10 +41,15 @@
     z-index: 2;
     flex-shrink: 0;
     display: block;
-    @include adaptive-value(width, 122px, 101px);
-    transition: filter $transitionDuration ease;
+    @include adaptive-value(width, 147px, 129px);
     img {
       width: 100%;
+      transition: $transitionDuration ease;
+    }
+    &-float {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
     }
   }
   &__navigation {
@@ -182,7 +187,12 @@
       animation: fade-in 0.3s ease both;
     }
     .header__logo {
-      filter: brightness(0);
+      &-main {
+        opacity: 0;
+      }
+      &-float {
+        opacity: 1;
+      }
     }
     .header__menu a {
       color: rgba(41, 47, 63, 0.5);
@@ -233,7 +243,12 @@
         }
       }
       .header__logo {
-        filter: none;
+        &-main {
+          opacity: 1;
+        }
+        &-float {
+          opacity: 0;
+        }
       }
       .header__toggle {
         color: #fff;

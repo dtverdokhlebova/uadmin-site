@@ -21,7 +21,8 @@ mixin header(hasMenu = true, mods)
             span
             span
         a.header__logo(href='#')
-          img(src='../../images/logos/logo_u_admin.svg' alt='')
+          img.header__logo-main(src='../../images/logos/logo_header.svg' alt='')
+          img.header__logo-float(src='../../images/logos/logo_header_monochrome.svg' alt='')
         if hasMenu
           .header__navigation
             .header__menu
