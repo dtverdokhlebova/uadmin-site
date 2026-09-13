@@ -11,6 +11,7 @@ Thumbs.db
 *.log*
 .stylelintcache
 node_modules/
+.visual-checks/
 
 # Генерируемые файлы
 src/blocks/mixins.pug

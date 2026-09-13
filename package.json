@@ -9,7 +9,9 @@
     "build": "gulp pugMixins && vite build && node .change-path.js",
     "preview": "vite preview",
     "block": "node .create-block.js",
-    "page": "node .create-page.js"
+    "page": "node .create-page.js",
+    "screens:before": "node scripts/visual-checks.js before",
+    "screens:compare": "node scripts/visual-checks.js compare"
   },
   "browserslist": [
     "> 5%",
@@ -30,6 +32,9 @@
     "eslint-plugin-sonarjs": "^0.19.0",
     "eslint-plugin-unicorn": "^46.0.0",
     "gulp": "^4.0.2",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.63.0",
+    "pngjs": "^7.0.0",
     "pug-lint": "^2.7.0",
     "sass": "^1.61.0",
     "stylelint": "^15.4.0",
