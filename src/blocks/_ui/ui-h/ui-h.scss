@@ -1,4 +1,10 @@
 .ui {
+  &-h1 {
+    margin: 0;
+    font-weight: 600;
+    @include adaptive-value(font-size, 58px, 25px);
+    line-height: 1.1;
+  }
   &-h2 {
     margin: 0;
     font-weight: 600;

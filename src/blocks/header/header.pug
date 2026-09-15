@@ -20,8 +20,10 @@ mixin header(hasMenu = true, mods)
             span
             span
             span
-        a.header__logo(href='#')
+        a.header__logo(href='/')
           img.header__logo-main(src='../../images/logos/logo_header.svg' alt='')
+          if mods === '--noBg'
+            img.header__logo-dark-text(src='../../images/logos/logo_header_dark_text.svg' alt='')
           img.header__logo-float(src='../../images/logos/logo_header_monochrome.svg' alt='')
         if hasMenu
           .header__navigation
@@ -30,5 +32,5 @@ mixin header(hasMenu = true, mods)
                 .header__menu-item
                   a(href='#')=item
         .header__actions
-          +ui-button('Попробовать', '#contact', '--outline-extra-light')
+          +ui-button('Попробовать', '#contact', mods === '--noBg' ? '--outline' : '--outline-extra-light')
     block

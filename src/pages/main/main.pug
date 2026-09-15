@@ -4,13 +4,49 @@ block variables
   -const pageTitle ='U-Admin'
   -const hasHeader =true
 
+  -
+    const contactData = {
+      title: 'Запросить презентацию',
+      text: 'Оставьте заявку, наш менеджер свяжется с вами и&nbsp;предоставит демо-доступ к системе U-Admin',
+      formButtonText: 'Запросить презентацию',
+    }
+
+  -
+    const featureTitles =[
+      'Единая платформа управления ИТ',
+      'Service Desk нового поколения',
+      'CMDB и управление активами',
+      'Управление картриджами',
+      'Цифровой двойник инфраструктуры',
+      'Карта сотрудников и рабочих мест',
+      'Автоматизация внутренних процессов',
+      'Отчеты и аналитика',
+      'Аудит безопасности'
+    ]
+    const featureItems =[
+      'Единый Service Desk и портал самообслуживания',
+      'ITAM и CMDB с полным жизненным циклом активов',
+      'Управление инфраструктурой и серверами',
+      'Tenant-архитектура для холдингов и сервисных компаний'
+    ]
+
+    const featuresData = featureTitles.map((title, index) => ({
+      title,
+      image: `../../images/features/features_${index + 1}.jpg`,
+      text: 'Все процессы ИТ-службы — в одной системе:',
+      list: featureItems,
+      textAfter: 'ИИ-анализ влияния изменений — определяет, какие пользователи, сервисы и бизнес-процессы пострадают при изменении любого объекта CMDB'
+    }))
+
 block content
   main.main
     +banner()
     +solution()
     +capabilities()
-    +features()
+    +section().features
+      +section-head('Ключевые особенности', 'Безопасное управление железом, поддержкой и разработкой', '--center')
+      +features(featuresData, true)
     +tariffs()
     +deployment()
     +experts()
-    +contact()
+    +contact(contactData)

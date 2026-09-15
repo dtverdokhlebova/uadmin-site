@@ -1,0 +1,27 @@
+mixin cards(items, mods)
+  -
+    const baseName = 'cards'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .cards(class=allMods)&attributes(attributes)
+    .cards__grid
+      each item in items
+        .cards__item
+          if item.icon
+            .cards__icon
+              img(src=item.icon alt='')
+          if item.img
+            .cards__img
+              img(src=item.img alt='')
+          .cards__content
+            if item.title
+              +ui-h3(item.title)
+            if item.text
+              +ui-p1(item.text).ui-grey

@@ -1,0 +1,17 @@
+mixin breadcrumbs(items, mods)
+  -
+    const baseName = 'breadcrumbs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .breadcrumbs(class=allMods)&attributes(attributes)
+    a.breadcrumbs__item.breadcrumbs__item--home(href='./')
+      img.breadcrumbs__icon(src='../../images/icons/icon_home.svg' alt='Главная')
+    each item in items
+      a.breadcrumbs__item.breadcrumbs__item--link(href=item.href)=item.title

@@ -1,0 +1,16 @@
+mixin module-features(items, mods)
+  -
+    const baseName = 'module-features'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .module-features(class=allMods)&attributes(attributes)
+    .module-features__grid
+      each item in items
+        +capability-small(item, '--inShort', 'div')

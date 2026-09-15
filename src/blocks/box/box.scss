@@ -1,0 +1,7 @@
+.box {
+  &--section {
+    &:not(:last-child) {
+      @include adaptive-value(margin-bottom, 100px, 50px, 30px);
+    }
+  }
+}

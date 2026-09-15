@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTariffsCompare()
   initModals()
   initFeaturesSlider()
+  initSpoilers()
   initUiInputs()
   initPhoneMasks()
   initContactForm()
@@ -63,7 +64,8 @@ const updateHeaderActionButtons = ({
 
   for (const button of headerActionButtons) {
     button.classList.toggle('ui-button--primary', isPrimary)
-    button.classList.toggle('ui-button--outline-extra-light', !isPrimary)
+    button.classList.toggle('ui-button--outline-extra-light', !isPrimary && !siteHeader.classList.contains('header--noBg'))
+    button.classList.toggle('ui-button--outline', !isPrimary && siteHeader.classList.contains('header--noBg'))
   }
 }
 
@@ -359,7 +361,13 @@ const initModals = () => {
 }
 
 const initFeaturesSlider = () => {
-  const featuresSliderElement = document.querySelector('.features__slider')
+  for (const features of document.querySelectorAll('.features')) {
+    initFeatureSlider(features)
+  }
+}
+
+const initFeatureSlider = (features) => {
+  const featuresSliderElement = features.querySelector('.features__slider')
 
   if (!featuresSliderElement || typeof Swiper === 'undefined') {
     return
@@ -379,11 +387,11 @@ const initFeaturesSlider = () => {
         watchOverflow: true,
         loop: true,
         navigation: {
-          nextEl: '.ui-slider-button--next',
-          prevEl: '.ui-slider-button--prev'
+          nextEl: features.querySelector('.ui-slider-button--next'),
+          prevEl: features.querySelector('.ui-slider-button--prev')
         },
         pagination: {
-          el: '.ui-slider-pagination',
+          el: features.querySelector('.ui-slider-pagination'),
           clickable: true
         }
       })
@@ -603,5 +611,16 @@ const initContactForm = () => {
         dispatchContactFormEvent(contactFormEvents.success)
         contactValidation.refresh()
       })
+  }
+}
+
+const initSpoilers = () => {
+  for (const trigger of document.querySelectorAll('.spoiler__trigger')) {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.spoiler')
+      const isOpen = item.classList.toggle('spoiler--open')
+
+      item.querySelector('.spoiler__content').hidden = !isOpen
+    })
   }
 }

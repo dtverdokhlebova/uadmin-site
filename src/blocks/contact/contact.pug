@@ -58,7 +58,7 @@
     ['more-than-5000', 'Более 5000+']
   ]
 
-mixin contact(mods)
+mixin contact(contactData, mods)
   -
     const baseName = 'contact'
     let allMods = ''
@@ -77,9 +77,8 @@ mixin contact(mods)
           .section-head.section-head--max-w-0
             .contact__icon
               img(src='../../images/contact/contact_icon.png' alt='')
-            +ui-h2('Запросить презентацию', 'section-head')
-            +ui-h5('', 'section-head', 'div')
-              | Оставьте заявку, наш менеджер свяжется с вами и&nbsp;предоставит демо-доступ к системе U-Admin
+            +ui-h2(contactData.title, 'section-head')
+            +ui-h5(contactData.text, 'section-head, --medium', 'div')
           .contact-admin
             .contact-admin__photo
               img(src='../../images/contact/contact_admin_photo.jpg' alt='')
@@ -111,7 +110,7 @@ mixin contact(mods)
                 a(href='#') обработку персональных данных
               .contact-form__group-errors.js-contact-form-policy-errors
             .contact-form__row
-              +ui-button('Запросить презентацию', null, '--size-l, --primary').contact-form__submit(type='submit')
+              +ui-button(contactData.formButtonText, null, '--size-l, --primary').contact-form__submit(type='submit')
           .contact-form__success.js-contact-form-success(tabindex='-1' hidden)
             .contact-form__success-content
               .contact-form__success-icon

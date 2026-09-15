@@ -1,0 +1,12 @@
+.module-features {
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include adaptive-value(gap, 30px, 20px);
+    @include media-tablet {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

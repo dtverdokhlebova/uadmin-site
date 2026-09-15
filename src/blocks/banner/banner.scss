@@ -91,18 +91,24 @@
     }
   }
   &__actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    margin-inline: auto;
     @include adaptive-value(gap, 20px, 10px);
+    @include media-laptop {
+      display: flex;
+      flex-wrap: wrap;
+    }
     @include media-tablet {
       justify-content: flex-start;
+      margin-inline: unset;
     }
   }
   &__ui-button {
-    @include adaptive-value(min-width, 200px, 200px);
+    min-width: design-vw(200px);
     @include media-laptop {
-      min-width: auto;
+      min-width: unset;
     }
   }
   &__visual {

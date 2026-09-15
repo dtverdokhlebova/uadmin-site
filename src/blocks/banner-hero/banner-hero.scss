@@ -1,0 +1,79 @@
+.banner-hero {
+  &__inner {
+    @include adaptive-values((
+      padding-top: (148px, 72px, 82px),
+      padding-bottom: (150px, 80px, 35px)
+    ));
+  }
+  &__content {
+    text-align: center;
+    @include media-tablet {
+      padding: 0 var(--inner-pd-mob);
+      text-align: left;
+    }
+    &:not(:last-child) {
+      @include adaptive-value(margin-bottom, 90px, 50px);
+    }
+  }
+  &__head {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    @include adaptive-values((
+      max-width: (1200px, 700px),
+      gap: (18px, 16px)
+    ));
+    &:not(:last-child) {
+      @include adaptive-value(margin-bottom, 34px, 25px);
+    }
+  }
+  &__breadcrumbs {
+    justify-content: center;
+    @include adaptive-value(margin-bottom, 29px, 30px, 20px);
+    @include media-tablet {
+      justify-content: flex-start;
+    }
+  }
+  &__actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    margin-inline: auto;
+    @include adaptive-value(gap, 20px, 10px);
+    @include media-laptop {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include media-tablet {
+      flex-direction: column;
+      margin-inline: unset;
+    }
+  }
+  &__ui-button {
+    min-width: design-vw(306px);
+    @include media-laptop {
+      min-width: unset;
+    }
+  }
+  &__image {
+    margin-right: auto;
+    margin-left: auto;
+    background: $gradientBg;
+    @include adaptive-values((
+      max-width: (1200px, 730px),
+      padding: ((50px 50px 0), (40px 40px 0), (25px 25px 0)),
+      border-radius: (20px, 15px)
+    ));
+    @include media-tablet {
+      max-width: 100%;
+    }
+    img {
+      width: 100%;
+      pointer-events: none;
+      @include adaptive-values((
+        border-radius: ((10px 10px 0 0), (10px 10px 0 0)),
+      ));
+    }
+  }
+}

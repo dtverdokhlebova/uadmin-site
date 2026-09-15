@@ -1,0 +1,46 @@
+.spoiler {
+  background: #fff;
+  @include adaptive-value(border-radius, 20px, 15px);
+  @include card-hover;
+  @include media-hover {
+    .spoiler__trigger {
+      color: $grey70;
+    }
+  }
+  &--open {
+    .spoiler__trigger {
+      color: $grey70;
+    }
+    .spoiler__arrow {
+      transform: rotate(180deg);
+    }
+  }
+  &__trigger {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: $grey;
+    cursor: pointer;
+    transition: $transitionDuration;
+    @include adaptive-values((
+      gap: (34px, 12px),
+      padding: ((21px 30px 19px), (11px 20px 13px))
+    ));
+  }
+  &__arrow {
+    flex-shrink: 0;
+    @include adaptive-values((
+      width: (16px, 10px),
+      height: (25px, 21px)
+    ));
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='25' fill='none'%3E%3Cpath fill='%23071235' fill-opacity='.45' d='M7.232 16.768a1.086 1.086 0 0 0 1.536 0l6.914-6.913a1.086 1.086 0 1 0-1.537-1.537L8 14.464 1.855 8.318A1.086 1.086 0 1 0 .318 9.855z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transition: $transitionDuration;
+  }
+  &__content {
+    @include adaptive-value(padding, 0 30px 19px, 0 20px 13px);
+    color: $grey;
+  }
+}

@@ -1,0 +1,24 @@
+mixin comparison(items, mods)
+  -
+    const baseName = 'comparison'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .comparison(class=allMods)&attributes(attributes)
+    .comparison__grid
+      each item in items
+        div(class=`comparison__card comparison__card--${item.modifier}`)
+          .comparison__head
+            +ui-h3(item.title)
+            .comparison__img
+              img(src=item.icon alt='')
+          .comparison__list
+            each text in item.items
+              .comparison__li
+                +ui-p2(text)

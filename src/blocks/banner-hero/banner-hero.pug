@@ -1,0 +1,24 @@
+mixin banner-hero(content, mods)
+  -
+    const baseName = 'banner-hero'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  section.section.section--pd0.banner-hero(class=allMods data-header-float-after)&attributes(attributes)
+    .inner.banner-hero__inner
+      .banner-hero__content
+        +breadcrumbs(content.breadcrumbs, 'banner-hero')
+        .banner-hero__head
+          +ui-h1(content.title, 'banner-hero')
+          +ui-h5(content.description, 'banner-hero, --medium', 'div').ui-grey
+        .banner-hero__actions
+          each action in content.actions
+            +ui-button(action.title, action.href, `banner-hero, ${action.mods}`)
+      .banner-hero__image
+        img(src=content.image alt=content.imageAlt fetchpriority='high')

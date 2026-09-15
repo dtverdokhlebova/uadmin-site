@@ -1,9 +1,9 @@
 -
   const capabilityHighlights =[
-    ['Приём заявок', 'capabilities_1.png'],
-    ['Удаленный доступ', 'capabilities_2.png'],
-    ['Учёт оборудования', 'capabilities_3.png'],
-    ['AI-помощник', 'capabilities_4.png']
+    ['Приём заявок', 'capabilities_1.png', './tickets.html'],
+    ['Удаленный доступ', 'capabilities_2.png', '#'],
+    ['Учёт оборудования', 'capabilities_3.png', '#'],
+    ['AI-помощник', 'capabilities_4.png', '#']
   ]
   const capabilityColumns =[
     {
@@ -44,7 +44,7 @@
     }
   ]
 
-mixin capability-small(item, mods)
+mixin capability-small(item, mods, tagName = 'a')
   -
     const baseName = 'capabilities__box'
     let allMods = ''
@@ -56,7 +56,7 @@ mixin capability-small(item, mods)
       allMods = allMods.trim()
     }
 
-  a.capabilities__box.capabilities__box--small(class=allMods href='#')&attributes(attributes)
+  #{tagName}.capabilities__box.capabilities__box--small(class=allMods href=tagName === 'a' ? '#' : null)&attributes(attributes)
     .capabilities__icon
       img(src=`../../images/icons/${item[1]}` alt='')
     +ui-p2(item[0])
@@ -80,7 +80,7 @@ mixin capabilities(mods)
       .capabilities__layout
         .capabilities__grid.capabilities__grid--main
           each item in capabilityHighlights
-            a.capabilities__box.capabilities__box--big(href='#')
+            a.capabilities__box.capabilities__box--big(href=item[2])
               .capabilities__img
                 img(src=`../../images/capabilities/${item[1]}` alt='')
               +ui-h6(item[0], '', 'div')

@@ -1,0 +1,21 @@
+mixin benefits(items, mods)
+  -
+    const baseName = 'benefits'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .benefits(class=allMods)&attributes(attributes)
+    .benefits__grid
+      each item in items
+        .benefits__card
+          .benefits__content
+            +ui-h3(item.title)
+            +ui-p1(item.text).ui-grey
+          .benefits__img
+            img(src=item.icon alt='')

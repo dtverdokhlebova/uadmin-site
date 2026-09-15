@@ -1,0 +1,37 @@
+.breadcrumbs {
+  display: flex;
+  @include adaptive-value(gap, 10px, 10px);
+  &__item {
+    color: rgba(7, 18, 53, 0.45);;
+    border: 1px solid rgba(7, 18, 53, 0.15);
+    @include adaptive-values((
+      padding: ((4px 10px 6px), (4px 10px 6px)),
+      font-size: (16px, 15px),
+      border-radius: (10px, 10px)
+    ));
+    @include media-hover {
+      color: rgba(7, 18, 53, 0.7);
+      border-color: rgba(7, 18, 53, 0.4);
+      .breadcrumbs__icon {
+        opacity: 0.7;
+      }
+    }
+    &:active {
+      color: rgba(7, 18, 53, 0.7);
+      border-color: rgba(7, 18, 53, 0.4);
+      background: rgba(7, 18, 53, 0.1);
+      .breadcrumbs__icon {
+        opacity: 0.7;
+      }
+    }
+    &--home {
+      display: flex;
+    }
+  }
+  &__icon {
+    @include adaptive-value(width, 17px, 13px);
+    margin: auto;
+    opacity: 0.45;
+    transition: $transitionDuration;
+  }
+}

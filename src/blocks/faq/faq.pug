@@ -1,0 +1,17 @@
+mixin faq(items, mods)
+  -
+    const baseName = 'faq'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .faq(class=allMods)&attributes(attributes)
+    .faq__list
+      each item in items
+        +spoiler(item.title)
+          +ui-p1(item.answer)

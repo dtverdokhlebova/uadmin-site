@@ -1,0 +1,254 @@
+extends ../../layouts/layout
+
+block variables
+  -const pageTitle = 'Возможности — U-Admin'
+  -const hasHeader = true
+
+  -
+    const contactData = {
+      title: 'Проверьте U-Admin на реальных сценариях вашей <span class="ui-nowrap">ИТ-службы</span>',
+      text: 'Покажем систему на ваших процессах, оценим миграцию и составим план запуска',
+      formButtonText: 'Запросить демонстрацию',
+    }
+
+  -
+    const hero = {
+      title: 'Все обращения — в единой очереди. Ни&nbsp;одна заявка не&nbsp;потеряется',
+      description: 'U-Admin принимает обращения из&nbsp;портала, почты и&nbsp;других каналов, автоматически направляет их&nbsp;нужной команде и&nbsp;контролирует сроки по&nbsp;SLA — во&nbsp;всех филиалах и&nbsp;площадках.',
+      breadcrumbs: [
+        {
+          title: 'Возможности',
+          href: '#'
+        }
+      ],
+      actions: [
+        {
+          title: 'Запросить демонстрацию',
+          href: '#contact',
+          mods: '--primary, --py-l'
+        },
+        {
+          title: 'Попробовать на своих данных',
+          href: '#contact',
+          mods: '--secondary, --py-l'
+        }
+      ],
+      image: '../../images/banner-hero/banner_hero_tickets.jpg',
+      imageAlt: 'Интерфейс заявок'
+    }
+
+  -
+    const stepsData = [
+      {
+        title: 'Обращение',
+        text: 'Портал, почта или интеграции',
+        img: '../../images/cards/cards_tickets_step_1.png',
+      },
+      {
+        title: 'Классификация',
+        text: 'Категория, услуга, приоритет',
+        img: '../../images/cards/cards_tickets_step_2.png',
+      },
+      {
+        title: 'Исполнение',
+        text: 'Назначение, SLA, коммуникации',
+        img: '../../images/cards/cards_tickets_step_3.png',
+      },
+      {
+        title: 'Результат',
+        text: 'Решение, оценка, аналитика',
+        img: '../../images/cards/cards_tickets_step_4.png',
+      }
+    ]
+
+  -
+    const featuresItems = [
+      {
+        number: '1.',
+        title: 'Принимайте заявки удобным способом',
+        image: '../../images/features/features_tickets_1.jpg',
+        text: 'Сотрудник создаёт обращение через портал или привычный канал. U-ADMIN превращает сообщение в структурированную заявку, сохраняет контекст и сообщает пользователю о каждом изменении.'
+      },
+      {
+        number: '2.',
+        title: 'Настройте процессы под вашу ИТ-службу',
+        image: '../../images/features/features_tickets_2.jpg',
+        text: 'Используйте категории, каталог услуг, статусы, приоритеты, согласования и правила назначения. Система адаптируется к действующим процессам без дорогого проекта кастомизации.'
+      },
+      {
+        number: '3.',
+        title: 'Решайте быстрее — с&nbsp;полным контекстом',
+        image: '../../images/features/features_tickets_3.jpg',
+        text: 'В карточке заявки видны пользователь, площадка, связанное оборудование, предыдущие обращения, SLA и история действий. Инженеру не нужно собирать информацию вручную.'
+      },
+      {
+        number: '4.',
+        title: 'Покажите результат руководству',
+        image: '../../images/features/features_tickets_4.jpg',
+        text: 'Отчёты по срокам, причинам, командам, филиалам и услугам помогают находить узкие места и планировать ресурсы.'
+      }
+    ]
+
+  -
+    const comparisonData = {
+      title: 'Не просто функция. Новый рабочий контур <span class="ui-nowrap">ИТ-службы</span>',
+      items: [
+        {
+          title: 'Без U-Admin',
+          modifier: 'disable',
+          icon: '../../images/comparisons/comparisons_tickets_without.png',
+          items: [
+            'Обращения приходят в почту, мессенджеры и по телефону;',
+            'Пользователи не понимают, кто и когда решит проблему;',
+            'Руководителю сложно контролировать загрузку и соблюдение SLA;',
+            'История решений теряется вместе с перепиской.'
+          ]
+        },
+        {
+          title: 'С U-Admin',
+          modifier: 'enable',
+          icon: '../../images/comparisons/comparisons_tickets_with.png',
+          items: [
+            'Единая точка входа;',
+            'Маршрутизация без ручной диспетчеризации;',
+            'Контроль сроков и нагрузки;',
+            'Единая история и измеримый результат.'
+          ]
+        }
+      ]
+    }
+
+  -
+    const benefitsData = {
+      title: 'Три причины выбрать <span class="ui-nowrap">U-Admin</span>',
+      items: [
+        {
+          title: 'Единая точка входа',
+          text: 'Все обращения, комментарии, файлы и статусы собраны в одной карточке.',
+          icon: '../../images/benefits/benefits_tickets_reason_1.png',
+        },
+        {
+          title: 'Маршрутизация без ручной диспетчеризации',
+          text: 'Категория, услуга, филиал и приоритет определяют исполнителя и маршрут.',
+          icon: '../../images/benefits/benefits_tickets_reason_2.png',
+        },
+        {
+          title: 'Контроль сроков и нагрузки',
+          text: 'SLA, очереди, эскалации и дашборды показывают риски до срыва.',
+          icon: '../../images/benefits/benefits_tickets_reason_3.png',
+        }
+      ]
+    }
+
+  -
+    const benefitsData2 = {
+      title: 'U-Admin работает как единая система',
+      description: 'Эта функция не изолирована. Она использует общий контекст пользователей, оборудования, заявок, площадок, прав доступа и аналитики. Поэтому данные не приходится переносить между несколькими решениями.',
+      items: [
+        {
+          title: 'Единые данные',
+          text: 'Одна модель пользователей, активов, заявок и подразделений.',
+          icon: '../../images/benefits/benefits_tickets_system_1.png',
+        },
+        {
+          title: 'Единые процессы',
+          text: 'Маршрутизация, права, уведомления, SLA и аудит.',
+          icon: '../../images/benefits/benefits_tickets_system_2.png',
+        },
+        {
+          title: 'Доступная адаптация',
+          text: 'Настраиваем систему под процессы компании без высокой стоимости доработок.',
+          icon: '../../images/benefits/benefits_tickets_system_3.png',
+        }
+      ]
+    }
+
+  -
+    const modules = [
+      ['Портал само-<br>обслуживания', 'icon_locale_select.svg'],
+      ['Каталог<br>услуг', 'icon_catalog.svg'],
+      ['SLA и<br>эскалации', 'icon_sla.svg'],
+      ['Очереди<br>и группы', 'icon_priorities.svg'],
+      ['Шаблоны<br>ответов', 'icon_request_templates.svg'],
+      ['Согласования', 'icon_verified.svg'],
+      ['База знаний', 'icon_scan_unknown.svg'],
+      ['Отчёты<br>и дашборды', 'icon_reports.svg']
+    ]
+
+  -
+    const audienceData = {
+      title: 'Кому подходит',
+      items: [
+        {
+          text: 'Компаниям с филиалами, площадками и централизованной <span class="ui-nowrap">ИТ-службой</span>',
+          icon: '../../images/icons/icon_arrow_right_romb.svg'
+        },
+        {
+          text: 'Организациям, которые заменяют дорогой, устаревший, иностранный или самописный Service Desk.',
+          icon: '../../images/icons/icon_arrow_right_romb.svg'
+        },
+        {
+          text: 'Командам, которым нужен единый контур заявок, оборудования и удалённой поддержки.',
+          icon: '../../images/icons/icon_arrow_right_romb.svg'
+        },
+        {
+          text: 'Заказчикам, для которых стоимость и скорость кастомизации критичны.',
+          icon: '../../images/icons/icon_arrow_right_romb.svg'
+        }
+      ]
+    }
+
+  -
+    const faqData = [
+      {
+        title: 'Можно ли перенести заявки из текущей системы?',
+        answer: 'SLA, очереди, эскалации и дашборды показывают риски до срыва.'
+      },
+      {
+        title: 'Подходит ли система для нескольких филиалов?',
+        answer: 'текст текст текст',
+      },
+      {
+        title: 'Сколько занимает запуск?',
+        answer: 'текст текст',
+      }
+    ]
+
+block header
+  +header(true, '--noBg')
+
+block content
+  main.main
+    +banner-hero(hero)
+
+    +section
+      +section-head(comparisonData.title, '', '--center, --tablet-w-100')
+      +comparison(comparisonData.items)
+
+    +section
+      +section-head(benefitsData.title, benefitsData.description, '--center')
+      +benefits(benefitsData.items)
+
+    +section
+      +section-head('Как это работает', '', '--center')
+      +box('--section')
+        +cards(stepsData)
+      +features(featuresItems)
+
+    +section
+      +section-head('Возможности модуля', '', '--center')
+      +module-features(modules)
+
+    +section
+      +section-head(benefitsData2.title, benefitsData2.description, '--center')
+      +benefits(benefitsData2.items)
+
+    +section
+      +section-head(audienceData.title, '', '--center')
+      +cards(audienceData.items)
+
+    +section
+      +section-head('Частые вопросы', '', '--center')
+      +faq(faqData)
+
+    +contact(contactData)

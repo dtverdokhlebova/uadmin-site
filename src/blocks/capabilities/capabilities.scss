@@ -99,7 +99,7 @@
   &__box {
     display: grid;
     @include adaptive-values((
-      padding: (14px, 1px, 10px),
+      padding: (14px, 0, 10px),
       border-radius: (20px, 15px)
     ));
     text-align: center;
@@ -141,6 +141,17 @@
         @include media-laptop {
           align-self: unset;
         }
+      }
+    }
+    &--inShort {
+      @include adaptive-value(width, 154px, 105px);
+      aspect-ratio: 1.1;
+      @include media-laptop {
+        aspect-ratio: 1.13;
+      }
+      @include media-tablet {
+        width: auto;
+        aspect-ratio: unset;
       }
     }
   }

@@ -1,0 +1,40 @@
+.benefits {
+  &__grid {
+    display: grid;
+    @include adaptive-value(gap, 30px, 20px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include media-tablet {
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: design-vw(300px, $mediaWidthMobile);
+      padding-bottom: 2px;
+      @include horizontal-scroll;
+    }
+  }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    scroll-snap-align: start;
+    @include card-hover;
+    @include adaptive-values((
+      gap: (20px, 15px),
+      padding: ((40px 40px 44px), (22px 25px 29px)),
+      border-radius: (20px, 15px),
+    ));
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    @include adaptive-values((
+      gap: (15px, 12px),
+    ));
+  }
+  &__img {
+    @include adaptive-value(width, 96px, 61px);
+    margin-top: auto;
+    img {
+      width: 100%;
+    }
+  }
+}

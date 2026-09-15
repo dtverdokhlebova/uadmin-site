@@ -1,23 +1,4 @@
--
-  const featureTitles =[
-    'Единая платформа управления ИТ',
-    'Service Desk нового поколения',
-    'CMDB и управление активами',
-    'Управление картриджами',
-    'Цифровой двойник инфраструктуры',
-    'Карта сотрудников и рабочих мест',
-    'Автоматизация внутренних процессов',
-    'Отчеты и аналитика',
-    'Аудит безопасности'
-  ]
-  const featureItems =[
-    'Единый Service Desk и портал самообслуживания',
-    'ITAM и CMDB с полным жизненным циклом активов',
-    'Управление инфраструктурой и серверами',
-    'Tenant-архитектура для холдингов и сервисных компаний'
-  ]
-
-mixin features(mods)
+mixin features(items, withoutWrapper = false, mods)
   -
     const baseName = 'features'
     let allMods = ''
@@ -29,21 +10,30 @@ mixin features(mods)
       allMods = allMods.trim()
     }
 
-  section.section.features(class=allMods)&attributes(attributes)
-    .inner
-      +section-head('Ключевые особенности', 'Безопасное управление железом, поддержкой и разработкой', '--center')
-      .swiper.features__slider
-        .features__main.swiper-wrapper
-          each title, index in featureTitles
-            .features__item.swiper-slide
-              .features__img
-                img(src=`../../images/features/features_${index + 1}.jpg` alt='')
-              .features__content
-                +ui-h3(title, 'features')
-                +ui-text().ui-grey
-                  +ui-p1('Все процессы ИТ-службы — в одной системе:')
-                  +ui-list(featureItems, 1)
-                  +ui-p1('ИИ-анализ влияния изменений — определяет, какие пользователи, сервисы и бизнес-процессы пострадают при изменении любого объекта CMDB')
-        .features__controls
-          +ui-slider-controls().features__controls-inner
-      block
+  if withoutWrapper
+    +features-inner(items)
+  else
+    .features(class=allMods)&attributes(attributes)
+      +features-inner(items)
+
+
+mixin features-inner(items)
+  .swiper.features__slider
+    .features__main.swiper-wrapper
+      each item in items
+        .features__item.swiper-slide
+          .features__img
+            img(src=item.image alt='')
+          .features__content
+            if item.number
+              +ui-p2(item.number, 'features-count').ui-grey
+            +ui-h3(item.title, 'features')
+            +ui-text().ui-grey
+              if item.text
+                +ui-p1(item.text)
+              if item.list
+                +ui-list(item.list, 1)
+              if item.textAfter
+                +ui-p1(item.textAfter)
+    .features__controls
+      +ui-slider-controls().features__controls-inner

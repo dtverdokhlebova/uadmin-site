@@ -46,6 +46,7 @@
       width: 100%;
       transition: $transitionDuration ease;
     }
+    &-dark-text,
     &-float {
       position: absolute;
       inset: 0;
@@ -198,7 +199,7 @@
       color: rgba(41, 47, 63, 0.5);
 
       @include media-hover {
-        color: #292f3f;
+        color: $black;
       }
     }
   }
@@ -268,6 +269,23 @@
             width: (20px, 20px),
           ));
         }
+      }
+    }
+  }
+  &--noBg:not(.header--menu-open, .header--floating) {
+    .header__logo-main {
+      opacity: 0;
+    }
+    .header__logo-dark-text {
+      opacity: 1;
+    }
+    .header__toggle {
+      color: rgba(7, 18, 53, 0.5);
+    }
+    .header__menu-item a {
+      color: rgba(41, 47, 63, 0.5);
+      @include media-hover {
+        color: $black;
       }
     }
   }
