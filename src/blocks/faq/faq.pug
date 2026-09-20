@@ -2,6 +2,18 @@ mixin faq(items, mods)
   -
     const baseName = 'faq'
     let allMods = ''
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: items.map((item) => ({
+        '@type': 'Question',
+        name: item.title,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer
+        }
+      }))
+    }
     if (typeof mods !== 'undefined' && mods) {
       const modsList = mods.split(',')
       for (const element of modsList) {
@@ -15,3 +27,4 @@ mixin faq(items, mods)
       each item in items
         +spoiler(item.title)
           +ui-p1(item.answer)
+  script(type='application/ld+json')!= JSON.stringify(faqSchema).replace(/</g, '\\u003c')

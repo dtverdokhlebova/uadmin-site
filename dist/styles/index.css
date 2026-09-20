@@ -1761,24 +1761,20 @@ a {
           flex-direction: column;
   margin-right: auto;
   margin-left: auto;
-  max-width: 62.5vw;
   gap: 0.9375vw;
 }
 @media (max-width: 1919px) {
   .banner-hero__head {
-    max-width: 1200px;
     gap: 18px;
   }
 }
 @media (max-width: 1619px) {
   .banner-hero__head {
-    max-width: 700px;
     gap: 16px;
   }
 }
 @media (max-width: 1029px) {
   .banner-hero__head {
-    max-width: 169.0821256039vw;
     gap: 3.8647342995vw;
   }
 }
@@ -1798,6 +1794,46 @@ a {
 @media (max-width: 1029px) {
   .banner-hero__head:not(:last-child) {
     margin-bottom: 6.038647343vw;
+  }
+}
+.banner-hero__ui-h1 {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 59.375vw;
+}
+@media (max-width: 1919px) {
+  .banner-hero__ui-h1 {
+    max-width: 1140px;
+  }
+}
+@media (max-width: 1619px) {
+  .banner-hero__ui-h1 {
+    max-width: 700px;
+  }
+}
+@media (max-width: 1029px) {
+  .banner-hero__ui-h1 {
+    max-width: 169.0821256039vw;
+  }
+}
+.banner-hero__ui-h5 {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 62.5vw;
+}
+@media (max-width: 1919px) {
+  .banner-hero__ui-h5 {
+    max-width: 1200px;
+  }
+}
+@media (max-width: 1619px) {
+  .banner-hero__ui-h5 {
+    max-width: 700px;
+  }
+}
+@media (max-width: 1029px) {
+  .banner-hero__ui-h5 {
+    max-width: 169.0821256039vw;
   }
 }
 .banner-hero__breadcrumbs {
@@ -2348,12 +2384,12 @@ a {
 }
 @media (max-width: 1029px) {
   .capabilities__box {
-    padding: 10px;
+    padding: 10px, 8px;
   }
 }
 @media (max-width: 1029px) {
   .capabilities__box {
-    padding: 2.4154589372vw;
+    padding: 2.4154589372vw 1.9323671498vw;
     border-radius: 3.6231884058vw;
   }
 }

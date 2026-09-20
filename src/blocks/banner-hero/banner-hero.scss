@@ -21,12 +21,25 @@
     margin-right: auto;
     margin-left: auto;
     @include adaptive-values((
-      max-width: (1200px, 700px),
       gap: (18px, 16px)
     ));
     &:not(:last-child) {
       @include adaptive-value(margin-bottom, 34px, 25px);
     }
+  }
+  &__ui-h1 {
+    margin-right: auto;
+    margin-left: auto;
+    @include adaptive-values((
+      max-width: (1140px, 700px),
+    ));
+  }
+  &__ui-h5 {
+    margin-right: auto;
+    margin-left: auto;
+    @include adaptive-values((
+      max-width: (1200px, 700px),
+    ));
   }
   &__breadcrumbs {
     justify-content: center;
