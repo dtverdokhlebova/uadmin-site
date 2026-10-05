@@ -40,7 +40,7 @@ mixin deployment(mods)
 
   section.section.deployment(class=allMods)&attributes(attributes)
     .inner
-      +section-head('Разверните U-Admin так, как удобно вашей инфраструктуре', 'В собственной инфраструктуре или в облаке — выберите вариант размещения под требования вашей компании, политики безопасности и планируемую нагрузку', '--center')
+      +section-head({ title: 'Разверните U-Admin так, как удобно вашей инфраструктуре', description: 'В собственной инфраструктуре или в облаке — выберите вариант размещения под требования вашей компании, политики безопасности и планируемую нагрузку'}, '--center')
       .deployment__grid
         each card in deploymentCards
           .deployment-card

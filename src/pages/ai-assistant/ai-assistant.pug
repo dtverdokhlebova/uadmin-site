@@ -240,33 +240,33 @@ block content
     +banner-hero(hero)
 
     +section
-      +section-head(comparisonData.title, '', '--center, --tablet-w-100')
+      +section-head({ title: comparisonData.title, description: ''}, '--center, --tablet-w-100')
       +comparison(comparisonData.items)
 
     +section
-      +section-head(benefitsData.title, benefitsData.description, '--center')
+      +section-head({ title: benefitsData.title, description: benefitsData.description}, '--center')
       +benefits(benefitsData.items)
 
     +section
-      +section-head('Как это работает', '', '--center')
+      +section-head({ title: 'Как это работает', description: ''}, '--center')
       +box('--section')
         +cards(stepsData)
       +features(featuresItems)
 
     +section
-      +section-head('Возможности модуля', '', '--center')
+      +section-head({ title: 'Возможности модуля', description: ''}, '--center')
       +module-features(modules)
 
     +section
-      +section-head(benefitsData2.title, benefitsData2.description, '--center')
+      +section-head({ title: benefitsData2.title, description: benefitsData2.description}, '--center')
       +benefits(benefitsData2.items)
 
     +section
-      +section-head(audienceData.title, '', '--center')
+      +section-head({ title: audienceData.title, description: ''}, '--center')
       +cards(audienceData.items)
 
     +section
-      +section-head('Частые вопросы', '', '--center')
+      +section-head({ title: 'Частые вопросы', description: ''}, '--center')
       +faq(faqData)
 
     +contact(contactData)

@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-family: $font;
   @include adaptive-values((
     padding: ((10px 20px 10px 20px), (10px 20px 10px 20px)),
     font-size: (17px, 15px),
@@ -29,9 +30,28 @@
       padding-bottom: (13px, 12px)
     ));
   }
+  &--py-xl {
+    @include adaptive-values((
+      padding-top: (16px, 14px),
+      padding-bottom: (16px, 16px)
+    ));
+  }
   &--px-xxs {
     padding-right: 5px;
     padding-left: 5px;
+  }
+  &--size-s {
+    @include adaptive-values((
+      padding: ((11px 22px 11px 22px), (10px 20px 10px 20px)),
+      font-size: (16px, 15px),
+      border-radius: (10px)
+    ));
+    &-px-l {
+      @include adaptive-values((
+        padding-right: (34px, 24px),
+        padding-left: (34px, 24px),
+      ));
+    }
   }
   &--primary {
     color: #fff;
@@ -112,6 +132,20 @@
     color: rgba(7, 18, 53, 0.55);
     background: transparent;
     border: 1px solid rgba(7, 18, 53, 0.2);
+    @include media-hover {
+      color: rgba(7, 18, 53, 0.7);
+      border-color: rgba(7, 18, 53, 0.5);
+    }
+    &:active {
+      color: rgba(7, 18, 53, 0.7);
+      border-color: rgba(7, 18, 53, 0.5);
+      background: rgba(7, 18, 53, 0.1);
+    }
+  }
+  &--outline-bg-white {
+    color: rgba(7, 18, 53, 0.6);
+    background: #fff;
+    border: 1px solid rgba(7, 18, 53, 0.15);
     @include media-hover {
       color: rgba(7, 18, 53, 0.7);
       border-color: rgba(7, 18, 53, 0.5);

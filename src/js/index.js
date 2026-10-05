@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initHeader()
+  initBlogFilters()
   initTariffsFeatures()
   initTariffsCompare()
   initModals()
@@ -622,5 +623,27 @@ const initSpoilers = () => {
 
       item.querySelector('.spoiler__content').hidden = !isOpen
     })
+  }
+}
+
+const initBlogFilters = () => {
+  const filterGroups = document.querySelectorAll('.js-blog-filters')
+
+  if (filterGroups.length === 0) {
+    return
+  }
+
+  for (const filterGroup of filterGroups) {
+    const scrollContainer = filterGroup.querySelector('.blog-filters__scroll')
+
+    const updateScrollHint = () => {
+      const remainingScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth - scrollContainer.scrollLeft
+
+      filterGroup.classList.toggle('blog-filters--has-more', remainingScroll > 1)
+    }
+
+    scrollContainer.addEventListener('scroll', updateScrollHint, { passive: true })
+    window.addEventListener('resize', updateScrollHint)
+    updateScrollHint()
   }
 }

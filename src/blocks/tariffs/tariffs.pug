@@ -78,7 +78,7 @@ mixin tariffs(mods)
 
   section.section.tariffs(class=allMods)&attributes(attributes)
     .inner
-      +section-head('Тарифные планы', 'Подберите тариф подходящий именно для ваших бизнес-задач и&nbsp;процессов, не&nbsp;переплачивая за&nbsp;лишний функционал', '--center')
+      +section-head({ title: 'Тарифные планы', description: 'Подберите тариф подходящий именно для ваших бизнес-задач и&nbsp;процессов, не&nbsp;переплачивая за&nbsp;лишний функционал'}, '--center')
         +badge('Акция «Тест-драйв»: любой тариф на&nbsp;6&nbsp;месяцев бесплатно', 'tariffs, --color-orange, --size-large')
       .tariffs__cards
         each plan in tariffPlans

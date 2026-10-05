@@ -76,7 +76,7 @@ mixin capabilities(mods)
 
   section.section.capabilities(class=allMods)&attributes(attributes)
     .inner
-      +section-head('Функциональные возможности', 'Более 50 модулей в одном пакете для повышения производительности труда <nobr>ИТ-отдела</nobr> и&nbsp;замены фрагментарного ПО', '--center')
+      +section-head({ title: 'Функциональные возможности', description: 'Более 50 модулей в одном пакете для повышения производительности труда <nobr>ИТ-отдела</nobr> и&nbsp;замены фрагментарного ПО'}, '--center')
       .capabilities__layout
         .capabilities__grid.capabilities__grid--main
           each item in capabilityHighlights

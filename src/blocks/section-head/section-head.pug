@@ -1,4 +1,4 @@
-mixin section-head(title, description, mods)
+mixin section-head(data, mods, type)
   -
     const baseName = 'section-head'
     let allMods = ''
@@ -11,7 +11,8 @@ mixin section-head(title, description, mods)
     }
 
   .section-head(class=allMods)&attributes(attributes)
-    +ui-h2(title, 'section-head')
-    if description
-      +ui-h5(description, 'section-head', 'div')
+    if data.title
+      +ui-h2(data.title, 'section-head')
+    if data.description
+      +ui-h5(data.description, 'section-head', 'div')
     block

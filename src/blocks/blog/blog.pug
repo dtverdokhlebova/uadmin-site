@@ -1,0 +1,53 @@
+mixin blog-card(item, mods)
+  -
+    const baseName = 'blog-card'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  a.blog-card(class=allMods)(href='#')&attributes(attributes)
+    .blog-card__image
+      img(src=item.image alt='')
+    .blog-card__content
+      .blog-card__category=item.category
+      +ui-h3(item.title, 'blog-card')
+      .blog-card__description=item.description
+      if item.date || item.readTime
+        .blog-card__meta
+          if item.date
+            span=item.date
+          if item.date && item.readTime
+            span.blog-card__meta-sp ·
+          if item.readTime
+            span=item.readTime
+
+mixin blog-grid(items)
+  .blog-grid
+    each item in items
+      +blog-card(item, item.mods)
+
+mixin blog-catalog(filters, items)
+  .blog-intro(data-header-float-after)
+    +ui-h1('Блог U-ADMIN', 'blog-intro')
+    +ui-h5('Практические материалы об ITSM, Service Desk, ITAM, автоматизации ИТ-службы и работе ИТ-директора.', 'blog-intro, --medium', 'div').ui-grey
+  .blog-filters.js-blog-filters
+    .blog-filters__scroll
+      each filter, index in filters
+        - const modButton = index === 0 ? '--secondary' : '--outline-bg-white'
+        +ui-button(filter, null, `--size-s, ${modButton}`)
+  +blog-grid(items)
+  .blog-foot
+    +ui-button('Показать ещё статьи', null, 'blog-foot, --py-xl, --outline-bg-white')
+
+mixin blog-section(title, description, items)
+  .blog-head
+    .blog-head__text
+      h2.blog-head__title=title
+      .blog-head__description=description
+    +ui-button('Смотреть все', '#', '--size-s, --size-s-px-l, --outline-bg-white')
+  +blog-grid(items)

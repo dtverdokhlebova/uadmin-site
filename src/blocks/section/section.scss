@@ -31,4 +31,9 @@
       padding-bottom: design-vw(100px, $mediaWidthMobile);
     }
   }
+  &--first {
+    @include adaptive-values((
+      padding-top: (165px, 75px, 80px),
+    ));
+  }
 }

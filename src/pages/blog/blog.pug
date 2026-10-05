@@ -1,0 +1,138 @@
+extends ../../layouts/layout
+
+block variables
+  -const pageTitle = 'Блог'
+  -const hasHeader = true
+
+  -
+    const contactData = {
+      title: 'Проверьте U-Admin на реальных сценариях вашей <span class="ui-nowrap">ИТ-службы</span>',
+      text: 'Покажем систему на ваших процессах, оценим миграцию и составим план запуска',
+      formButtonText: 'Запросить демонстрацию',
+    }
+
+    const filters = [
+      'Все статьи',
+      'ITSM',
+      'Service Desk',
+      'ITAM',
+      'Управление ИТ',
+      'Кейсы',
+      'Практика',
+      'Новости U-ADMIN'
+    ]
+
+    const articles = [
+      {
+        mods: '--min-h-l',
+        category: 'Service Desk',
+        title: '7 признаков, что Service Desk пора менять',
+        description: 'Как понять, что текущая система уже ограничивает работу ИТ-службы.',
+        date: '9 сентября 2026',
+        readTime: '7 мин',
+        image: '../../images/blog/blog_bg_3.svg'
+      },
+      {
+        mods: '--min-h-l',
+        category: 'ITAM',
+        title: 'Что должна знать ИТ-служба о каждом активе',
+        description: 'Минимальный набор данных для управляемого жизненного цикла оборудования.',
+        date: '7 сентября 2026',
+        readTime: '6 мин',
+        image: '../../images/blog/blog_bg_0.svg'
+      },
+      {
+        mods: '--min-h-l',
+        category: 'Практика',
+        title: 'Как измерить качество внутренней поддержки',
+        description: 'SLA, скорость реакции, удовлетворённость и показатели, которые имеют смысл.',
+        date: '4 сентября 2026',
+        readTime: '8 мин',
+        image: '../../images/blog/blog_bg_2.svg'
+      },
+      {
+        mods: '--min-h-l',
+        category: 'ITSM',
+        title: 'Каталог услуг: как не превратить его в справочник',
+        description: 'Структура каталога, понятная пользователю и полезная ИТ-команде.',
+        date: '1 сентября 2026',
+        readTime: '7 мин',
+        image: '../../images/blog/blog_bg_1.svg'
+      },
+      {
+        mods: '--min-h-l',
+        category: 'Управление ИТ',
+        title: 'Как руководителю видеть загрузку инженеров',
+        description: 'От очередей и просрочек к управляемой пропускной способности команды.',
+        date: '28 августа 2026',
+        readTime: '5 мин',
+        image: '../../images/blog/blog_bg_2.svg'
+      },
+      {
+        mods: '--min-h-l',
+        category: 'Кейсы',
+        title: 'Как объединить заявки и оборудование в одном контуре',
+        description: 'Практический сценарий для распределённой инфраструктуры.',
+        date: '25 августа 2026',
+        readTime: '6 мин',
+        image: '../../images/blog/blog_bg_3.svg'
+      }
+    ]
+
+    const serviceDeskArticles = [
+      {
+        category: 'Service Desk',
+        title: 'Как построить первую линию поддержки, которая действительно помогает',
+        description: 'Роли, ответственность и базовые правила коммуникации с пользователями.',
+        image: '../../images/blog/blog_bg_2.svg'
+      },
+      {
+        category: 'Service Desk',
+        title: 'SLA без формальности: какие сроки стоит контролировать',
+        description: 'Разбираем реакцию, решение, эскалации и внутренние показатели.',
+        image: '../../images/blog/blog_bg_3.svg'
+      },
+      {
+        category: 'Service Desk',
+        title: 'База знаний как часть процесса, а не архив инструкций',
+        description: 'Как связать знания с обращениями и сократить повторяющиеся вопросы.',
+        image: '../../images/blog/blog_bg_1.svg'
+      }
+    ]
+
+    const assetArticles = [
+      {
+        category: 'ITAM',
+        title: 'CMDB для практиков: какие связи действительно нужны',
+        description: 'Пользователь, устройство, площадка, заявка, услуга и история изменений.',
+        image: '../../images/blog/blog_bg_1.svg'
+      },
+      {
+        category: 'ITAM',
+        title: 'Жизненный цикл оборудования: от закупки до списания',
+        description: 'Что фиксировать на каждом этапе и где чаще всего теряются данные.',
+        image: '../../images/blog/blog_bg_2.svg'
+      },
+      {
+        category: 'ITAM',
+        title: 'Как подготовиться к инвентаризации без аврала',
+        description: 'Единый реестр, статусы, владельцы и история перемещений вместо ручной сверки.',
+        image: '../../images/blog/blog_bg_3.svg'
+      }
+    ]
+
+block header
+  +header(true, '--noBg')
+
+block content
+  main.main
+    +section('--first')
+      +blog-catalog(filters, articles)
+
+    +section
+      +blog-section('Service Desk', 'Практика организации поддержки: очереди, SLA, каталог услуг, база знаний и работа первой линии.', serviceDeskArticles)
+
+    +section
+      +blog-section('Управление ИТ-активами', 'Учёт оборудования, CMDB, жизненный цикл активов и связь техники с пользователями и обращениями.', assetArticles)
+
+    +contact(contactData)

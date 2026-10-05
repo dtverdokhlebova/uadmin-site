@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Блог</title>
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.min.css">
+    
+    <script type="module" crossorigin src="scripts/scripts.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body class="body">
+    <header class="header header--noBg">
+      <div class="header__inner">
+        <div class="header__bar">
+          <button class="header__toggle" type="button"><span></span><span></span><span></span></button><a class="header__logo" href="/"><img class="header__logo-main" src="images/logo_header.svg" alt=""/><img class="header__logo-dark-text" src="images/logo_header_dark_text.svg" alt=""/><img class="header__logo-float" src="images/logo_header_monochrome.svg" alt=""/></a>
+          <div class="header__navigation">
+            <div class="header__menu">
+              <div class="header__menu-item"><a href="#">Решение</a></div>
+              <div class="header__menu-item"><a href="#">Возможности</a></div>
+              <div class="header__menu-item"><a href="#">Особенности</a></div>
+              <div class="header__menu-item"><a href="#">Тарифы</a></div>
+              <div class="header__menu-item"><a href="#">Размещение</a></div>
+              <div class="header__menu-item"><a href="#">Экспертиза</a></div>
+              <div class="header__menu-item"><a href="#">Запросить презентацию</a></div>
+            </div>
+          </div>
+          <div class="header__actions"><a class="ui-button ui-button--outline" href="#contact">Попробовать</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="section section--first">
+        <div class="inner">
+          <div class="blog-intro" data-header-float-after="data-header-float-after">
+            <h1 class="ui-h1 blog-intro__ui-h1">Блог U-ADMIN
+            </h1>
+            <div class="ui-h5 blog-intro__ui-h5 ui-h5--medium ui-grey">Практические материалы об ITSM, Service Desk, ITAM, автоматизации ИТ-службы и работе ИТ-директора.
+            </div>
+          </div>
+          <div class="blog-filters js-blog-filters">
+            <div class="blog-filters__scroll">
+              <button class="ui-button ui-button--size-s ui-button--secondary" type="button">Все статьи
+              </button>
+              <button class="ui-button ui-button--size-s ui-button--outline-bg-white" type="button">ITSM
+              </button>
+              <button class="ui-button ui-button--size-s ui-button--outline-bg-white" type="button">Service Desk
+              </button>
+              <button class="ui-button ui-button--size-s ui-button--outline-bg-white" type="button">ITAM
+              </button>
+              <button class="ui-button ui-button--size-s ui-button--outline-bg-white" type="button">Управление ИТ
+              </button>
+              <button class="ui-button ui-button--size-s ui-button--outline-bg-white" type="button">Кейсы
+              </button>
+              <button class="ui-button ui-button--size-s ui-button--outline-bg-white" type="button">Практика
+              </button>
+              <button class="ui-button ui-button--size-s ui-button--outline-bg-white" type="button">Новости U-ADMIN
+              </button>
+            </div>
+          </div>
+          <div class="blog-grid"><a class="blog-card blog-card--min-h-l" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_3.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">Service Desk</div>
+                <h3 class="ui-h3 blog-card__ui-h3">7 признаков, что Service Desk пора менять
+                </h3>
+                <div class="blog-card__description">Как понять, что текущая система уже ограничивает работу ИТ-службы.</div>
+                <div class="blog-card__meta"><span>9 сентября 2026</span><span class="blog-card__meta-sp">·</span><span>7 мин</span>
+                </div>
+              </div></a><a class="blog-card blog-card--min-h-l" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_0.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">ITAM</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Что должна знать ИТ-служба о каждом активе
+                </h3>
+                <div class="blog-card__description">Минимальный набор данных для управляемого жизненного цикла оборудования.</div>
+                <div class="blog-card__meta"><span>7 сентября 2026</span><span class="blog-card__meta-sp">·</span><span>6 мин</span>
+                </div>
+              </div></a><a class="blog-card blog-card--min-h-l" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_2.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">Практика</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Как измерить качество внутренней поддержки
+                </h3>
+                <div class="blog-card__description">SLA, скорость реакции, удовлетворённость и показатели, которые имеют смысл.</div>
+                <div class="blog-card__meta"><span>4 сентября 2026</span><span class="blog-card__meta-sp">·</span><span>8 мин</span>
+                </div>
+              </div></a><a class="blog-card blog-card--min-h-l" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_1.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">ITSM</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Каталог услуг: как не превратить его в справочник
+                </h3>
+                <div class="blog-card__description">Структура каталога, понятная пользователю и полезная ИТ-команде.</div>
+                <div class="blog-card__meta"><span>1 сентября 2026</span><span class="blog-card__meta-sp">·</span><span>7 мин</span>
+                </div>
+              </div></a><a class="blog-card blog-card--min-h-l" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_2.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">Управление ИТ</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Как руководителю видеть загрузку инженеров
+                </h3>
+                <div class="blog-card__description">От очередей и просрочек к управляемой пропускной способности команды.</div>
+                <div class="blog-card__meta"><span>28 августа 2026</span><span class="blog-card__meta-sp">·</span><span>5 мин</span>
+                </div>
+              </div></a><a class="blog-card blog-card--min-h-l" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_3.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">Кейсы</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Как объединить заявки и оборудование в одном контуре
+                </h3>
+                <div class="blog-card__description">Практический сценарий для распределённой инфраструктуры.</div>
+                <div class="blog-card__meta"><span>25 августа 2026</span><span class="blog-card__meta-sp">·</span><span>6 мин</span>
+                </div>
+              </div></a>
+          </div>
+          <div class="blog-foot">
+            <button class="ui-button blog-foot__ui-button ui-button--py-xl ui-button--outline-bg-white" type="button">Показать ещё статьи
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="inner">
+          <div class="blog-head">
+            <div class="blog-head__text">
+              <h2 class="blog-head__title">Service Desk</h2>
+              <div class="blog-head__description">Практика организации поддержки: очереди, SLA, каталог услуг, база знаний и работа первой линии.</div>
+            </div><a class="ui-button ui-button--size-s ui-button--size-s-px-l ui-button--outline-bg-white" href="#">Смотреть все</a>
+          </div>
+          <div class="blog-grid"><a class="blog-card" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_2.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">Service Desk</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Как построить первую линию поддержки, которая действительно помогает
+                </h3>
+                <div class="blog-card__description">Роли, ответственность и базовые правила коммуникации с пользователями.</div>
+              </div></a><a class="blog-card" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_3.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">Service Desk</div>
+                <h3 class="ui-h3 blog-card__ui-h3">SLA без формальности: какие сроки стоит контролировать
+                </h3>
+                <div class="blog-card__description">Разбираем реакцию, решение, эскалации и внутренние показатели.</div>
+              </div></a><a class="blog-card" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_1.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">Service Desk</div>
+                <h3 class="ui-h3 blog-card__ui-h3">База знаний как часть процесса, а не архив инструкций
+                </h3>
+                <div class="blog-card__description">Как связать знания с обращениями и сократить повторяющиеся вопросы.</div>
+              </div></a>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="inner">
+          <div class="blog-head">
+            <div class="blog-head__text">
+              <h2 class="blog-head__title">Управление ИТ-активами</h2>
+              <div class="blog-head__description">Учёт оборудования, CMDB, жизненный цикл активов и связь техники с пользователями и обращениями.</div>
+            </div><a class="ui-button ui-button--size-s ui-button--size-s-px-l ui-button--outline-bg-white" href="#">Смотреть все</a>
+          </div>
+          <div class="blog-grid"><a class="blog-card" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_1.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">ITAM</div>
+                <h3 class="ui-h3 blog-card__ui-h3">CMDB для практиков: какие связи действительно нужны
+                </h3>
+                <div class="blog-card__description">Пользователь, устройство, площадка, заявка, услуга и история изменений.</div>
+              </div></a><a class="blog-card" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_2.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">ITAM</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Жизненный цикл оборудования: от закупки до списания
+                </h3>
+                <div class="blog-card__description">Что фиксировать на каждом этапе и где чаще всего теряются данные.</div>
+              </div></a><a class="blog-card" href="#">
+              <div class="blog-card__image"><img src="images/blog_bg_3.svg" alt=""/></div>
+              <div class="blog-card__content">
+                <div class="blog-card__category">ITAM</div>
+                <h3 class="ui-h3 blog-card__ui-h3">Как подготовиться к инвентаризации без аврала
+                </h3>
+                <div class="blog-card__description">Единый реестр, статусы, владельцы и история перемещений вместо ручной сверки.</div>
+              </div></a>
+          </div>
+        </div>
+      </section>
+      <section class="section section--bg-gradient contact" id="contact" data-header-float-until="data-header-float-until">
+        <div class="inner">
+          <div class="contact__wrapper">
+            <div class="contact__content">
+              <div class="section-head section-head--max-w-0">
+                <div class="contact__icon"><img src="images/contact_icon.png" alt=""/></div>
+                <h2 class="ui-h2 section-head__ui-h2">Проверьте U-Admin на реальных сценариях вашей <span class="ui-nowrap">ИТ-службы</span>
+                </h2>
+                <div class="ui-h5 section-head__ui-h5 ui-h5--medium">Покажем систему на ваших процессах, оценим миграцию и составим план запуска
+                </div>
+              </div>
+              <div class="contact-admin">
+                <div class="contact-admin__photo"><img src="images/contact_admin_photo.jpg" alt=""/>
+                  <div class="contact-admin__badge">15</div>
+                </div>
+                <div class="ui-p2 contact-admin__ui-p2">15 часов системного администратора в&nbsp;подарок
+                </div>
+              </div>
+              <div class="contact-brands">
+                <div class="contact-brands__item"><img src="images/logo_u_admin.svg" alt=""/></div>
+                <div class="contact-brands__item"><img src="images/logo_acomps.svg" alt=""/></div>
+                <div class="contact-brands__item"><img src="images/logo_yandex_cloud.svg" alt=""/></div>
+              </div>
+            </div>
+            <form class="contact-form js-contact-form js-contact-form-validation js-contact-form-demo" action="#">
+              <div class="contact-form__body">
+                <div class="contact-form__grid">
+                  <div class="ui-input contact-form__field">
+                    <input class="ui-input__control js-contact-form-name" id="contact-name" name="name" type="text" required="required"/>
+                    <label class="ui-input__label" for="contact-name">Имя</label><span class="ui-input__required"></span>
+                  </div>
+                  <div class="ui-input contact-form__field">
+                    <input class="ui-input__control js-contact-form-last-name" id="contact-last-name" name="last_name" type="text" required="required"/>
+                    <label class="ui-input__label" for="contact-last-name">Фамилия</label><span class="ui-input__required"></span>
+                  </div>
+                  <div class="ui-input contact-form__field contact-form__field--w100">
+                    <input class="ui-input__control js-contact-form-email" id="contact-email" name="email" type="email" required="required"/>
+                    <label class="ui-input__label" for="contact-email">Рабочий адрес электронной почты</label><span class="ui-input__required"></span>
+                  </div>
+                  <div class="ui-input contact-form__field contact-form__field--w100">
+                    <input class="ui-input__control js-contact-form-phone" id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="18" data-phone-mask="ru" required="required"/>
+                    <label class="ui-input__label" for="contact-phone">Рабочий телефон</label><span class="ui-input__required"></span>
+                  </div>
+                  <div class="ui-input contact-form__field contact-form__field--w100">
+                    <input class="ui-input__control js-contact-form-company" id="contact-company" name="company" type="text"/>
+                    <label class="ui-input__label" for="contact-company">Наименование компании</label>
+                  </div>
+                </div>
+                <div class="contact-form__row">
+                  <div class="contact-form__range" id="contact-range-group">
+                    <div class="contact-form__range-title">Количество рабочих станций и серверов в компании:</div>
+                    <div class="contact-form__range-options">
+                      <label class="contact-form__range-option">
+                        <input class="contact-form__range-input" type="radio" name="contact-form-range-option" value="up-to-100"/><span class="contact-form__range-box">до 100</span>
+                      </label>
+                      <label class="contact-form__range-option">
+                        <input class="contact-form__range-input" type="radio" name="contact-form-range-option" value="100-1000"/><span class="contact-form__range-box">100 — 1000</span>
+                      </label>
+                      <label class="contact-form__range-option">
+                        <input class="contact-form__range-input" type="radio" name="contact-form-range-option" value="1000-5000" checked="checked"/><span class="contact-form__range-box">1000 — 5000</span>
+                      </label>
+                      <label class="contact-form__range-option">
+                        <input class="contact-form__range-input" type="radio" name="contact-form-range-option" value="more-than-5000"/><span class="contact-form__range-box">Более 5000+</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="contact-form__row contact-form__row--mt-l">
+                  <label class="ui-checkbox ui-checkbox--white">
+                    <input class="ui-checkbox__input js-contact-form-policy" id="policy" name="policy" type="checkbox" required="required"/><span class="ui-checkbox__box"></span><span class="ui-checkbox__text">Подтверждаю, что ознакомился с&nbsp;<a href="#">политикой конфиденциальности</a> и&nbsp;даю согласие на&nbsp;<a href="#">обработку персональных данных</a></span>
+                  </label>
+                  <div class="contact-form__group-errors js-contact-form-policy-errors"></div>
+                </div>
+                <div class="contact-form__row">
+                  <button class="ui-button ui-button--size-l ui-button--primary contact-form__submit" type="submit">Запросить демонстрацию
+                  </button>
+                </div>
+              </div>
+              <div class="contact-form__success js-contact-form-success" tabindex="-1" hidden="hidden">
+                <div class="contact-form__success-content">
+                  <div class="contact-form__success-icon"><img src="images/contact_success.png" alt=""/></div>
+                  <div class="ui-h4 contact-form__success-title">Ваша заявка успешно<br/>отправлена
+                  </div>
+                  <div class="ui-p1 contact-form__success-text">Наш менеджер свяжется с вами и предоставит демо-доступ к системе U-Admin в ближайшее время
+                  </div>
+                </div>
+                <button class="ui-button ui-button--size-l ui-button--secondary contact-form__success-button js-contact-form-success-reset" type="button">Хорошо
+                </button>
+              </div>
+            </form>
+          </div>
+          <footer class="footer">
+            <div class="footer__meta">
+              <p>© ООО Актив софт, 2026</p>
+              <p>111123, Москва, шоссе Энтузиастов, д. 31, стр. 39, 5 этаж, офис 2</p>
+            </div>
+            <div class="footer__links"><a class="footer__link" href="#">Политика конфиденциальности</a><a class="footer__link" href="#">Пользовательское соглашение</a></div>
+          </footer>
+        </div>
+      </section>
+    </main>
+    <script src="libs/swiper/swiper-bundle.min.js"></script>
+    <script src="libs/just-validate/just-validate.production.min.js"></script>
+    <script src="libs/imask/imask.js"></script>
+    
+  </body>
+</html>
